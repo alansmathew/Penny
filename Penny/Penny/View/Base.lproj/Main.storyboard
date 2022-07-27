@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yY-qn-V7b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yY-qn-V7b">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -44,22 +43,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFM-cr-bDF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1161" y="1457"/>
-        </scene>
-        <!--More Settings-->
-        <scene sceneID="Mau-3b-dgL">
-            <objects>
-                <viewController id="N9d-4Y-1Vs" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Nw-f6-acR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Vye-va-Ccu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="More Settings" id="Y6g-lY-D5a"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="khh-VM-lJN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2071.0144927536235" y="2222.5446428571427"/>
         </scene>
         <!--Records-->
         <scene sceneID="JNP-Jm-du7">
@@ -119,7 +102,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recordsCell" id="BVa-DR-r6k" customClass="RecordsTableViewCell" customModule="Penny" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="394" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="394" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BVa-DR-r6k" id="qV3-r2-eyS">
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
@@ -326,7 +309,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="N9d-4Y-1Vs" kind="relationship" relationship="rootViewController" id="R7H-YQ-cQv"/>
+                        <segue destination="yVa-CI-0Fr" kind="relationship" relationship="rootViewController" id="8DY-ec-TwZ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1h-JN-BBb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -391,7 +374,7 @@
                                     <segment title="Month"/>
                                 </segments>
                             </segmentedControl>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h3X-av-9qy">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h3X-av-9qy">
                                 <rect key="frame" x="99.5" y="275" width="215" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⬆ $5000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88h-ws-p1C">
@@ -411,17 +394,17 @@
                                     <constraint firstItem="88h-ws-p1C" firstAttribute="centerY" secondItem="h3X-av-9qy" secondAttribute="centerY" id="Ox6-25-xYr"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcZ-Oy-fIz">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rcZ-Oy-fIz">
                                 <rect key="frame" x="20" y="325.5" width="374" height="400"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="KUM-Gj-skK"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ccv-Rz-7ge">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ccv-Rz-7ge">
                                 <rect key="frame" x="147.5" y="215" width="119" height="50"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="08q-7b-SQh">
+                                    <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="08q-7b-SQh">
                                         <rect key="frame" x="0.0" y="0.0" width="119" height="50"/>
                                     </datePicker>
                                 </subviews>
@@ -454,6 +437,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNk-lJ-QVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2038" y="714"/>
+        </scene>
+        <!--More Settings-->
+        <scene sceneID="cqA-W6-HY3">
+            <objects>
+                <viewController id="yVa-CI-0Fr" customClass="MenuViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UlZ-Hb-OzA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LA3-S9-Ra1">
+                                <rect key="frame" x="10" y="160" width="394" height="653"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="60" id="Ssg-H4-yvi">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ssg-H4-yvi" id="0Td-Gv-u6T">
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TEC-20-iWO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LA3-S9-Ra1" firstAttribute="top" secondItem="TEC-20-iWO" secondAttribute="top" constant="20" id="4Fc-JQ-QEB"/>
+                            <constraint firstItem="TEC-20-iWO" firstAttribute="bottom" secondItem="LA3-S9-Ra1" secondAttribute="bottom" id="Mg3-KU-qX0"/>
+                            <constraint firstItem="LA3-S9-Ra1" firstAttribute="leading" secondItem="TEC-20-iWO" secondAttribute="leading" constant="10" id="YJ4-gb-X68"/>
+                            <constraint firstItem="TEC-20-iWO" firstAttribute="trailing" secondItem="LA3-S9-Ra1" secondAttribute="trailing" constant="10" id="gdt-us-mOH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="More Settings" id="hCk-lD-gWK"/>
+                    <connections>
+                        <outlet property="menuTableView" destination="LA3-S9-Ra1" id="vP7-yY-dfq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rsr-Mq-Dzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2168" y="2235"/>
         </scene>
     </scenes>
     <resources>
