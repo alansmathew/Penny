@@ -10,6 +10,8 @@
 		5DE5402C2890E41D0065B83F /* AddTransaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DE5402B2890E41D0065B83F /* AddTransaction.storyboard */; };
 		5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE5402E2890E5BD0065B83F /* AddTransactionsViewController.swift */; };
 		63AF79EC2888482B00240517 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF79EB2888482B00240517 /* MapViewController.swift */; };
+		68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E734542890EA6700BBCF2A /* CatogeriesViewController.swift */; };
+		68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */; };
 		990258C7288685D500890200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990258C6288685D500890200 /* Constants.swift */; };
 		99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993776FF287F3CA9003330A5 /* AppDelegate.swift */; };
 		99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99377701287F3CA9003330A5 /* SceneDelegate.swift */; };
@@ -26,6 +28,8 @@
 		5DE5402B2890E41D0065B83F /* AddTransaction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTransaction.storyboard; sourceTree = "<group>"; };
 		5DE5402E2890E5BD0065B83F /* AddTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionsViewController.swift; sourceTree = "<group>"; };
 		63AF79EB2888482B00240517 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		68E734542890EA6700BBCF2A /* CatogeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatogeriesViewController.swift; sourceTree = "<group>"; };
+		68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatogeryViewController.swift; sourceTree = "<group>"; };
 		990258C6288685D500890200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		993776FC287F3CA9003330A5 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		993776FF287F3CA9003330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 				63AF79EB2888482B00240517 /* MapViewController.swift */,
 			);
 			path = MapView;
+			sourceTree = "<group>";
+		};
+		68E734532890EA3900BBCF2A /* Catogeries */ = {
+			isa = PBXGroup;
+			children = (
+				68E734542890EA6700BBCF2A /* CatogeriesViewController.swift */,
+				68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */,
+			);
+			path = Catogeries;
 			sourceTree = "<group>";
 		};
 		990258C5288685AB00890200 /* Constants */ = {
@@ -104,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9990411828871AE500B80545 /* Records Screen */,
+				68E734532890EA3900BBCF2A /* Catogeries */,
 				63AF79EE2888483800240517 /* MapView */,
 			);
 			path = Controller;
@@ -219,7 +233,9 @@
 				9937770A287F3CA9003330A5 /* Penny.xcdatamodeld in Sources */,
 				99AC6F90288762F000B45989 /* DateExtension.swift in Sources */,
 				999041152887162900B80545 /* RecordsViewController.swift in Sources */,
+				68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */,
 				5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */,
+				68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */,
 				990258C7288685D500890200 /* Constants.swift in Sources */,
 				99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */,
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
