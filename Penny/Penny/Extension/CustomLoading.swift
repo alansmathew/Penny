@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
     
 //    --------------------------------- usage ---------------------------------
-//    import NVActivityIndicatorView
+    
 //    var loading : (NVActivityIndicatorView,UIView)? ------ as in class file
 //    loading = customAnimation()  --- when u want to start loading
 //    loadingProtocol(with: loading! ,true)  --- above same time
