@@ -39,8 +39,8 @@ class RecordsViewController: UIViewController {
     @IBAction func addTrunsactionClick(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
         
-//        let viewC = storyboard.instantiateViewController(withIdentifier: "AddTransactionsViewController") as! AddTransactionsViewController
-//        navigationController?.pushViewController(viewC, animated: true)
+        let viewC = storyboard.instantiateViewController(withIdentifier: "AddTransactionsViewController") as! AddTransactionsViewController
+        navigationController?.pushViewController(viewC, animated: true)
     }
 
 }
