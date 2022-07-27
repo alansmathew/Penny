@@ -11,6 +11,10 @@ class RecordsViewController: UIViewController {
 
     @IBOutlet weak var recordsTableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var totalIncomeLabel: UILabel!
+    @IBOutlet weak var totalExpenseLabel: UILabel!
+    @IBOutlet weak var totalAmountLabel: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +29,25 @@ class RecordsViewController: UIViewController {
         addButton.layer.shadowRadius = 10.0;
         addButton.layer.masksToBounds = false;
         
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         tabBarController?.tabBar.isHidden = false
         recordsTableView.reloadData()
+        
+        for x in redorderData{
+            if x.type == "income" {
+                totalIncome += x.amount ?? 0.0
+            }
+            else{
+                totalExpense += x.amount ?? 0.0
+            }
+        }
+        totalAmount = totalIncome - totalExpense
+        totalAmountLabel.text = "$\(totalAmount)"
+        totalIncomeLabel.text = "⬆️ $\(totalIncome)"
+        totalExpenseLabel.text = "⬇️ $\(totalExpense)"
     }
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -59,9 +77,14 @@ extension RecordsViewController : UITableViewDataSource {
             cell.dateLabel.text = Date.getDayOnly(date: data[indexPath.row].date!)
             cell.timeLabel.text = Date.getTime(date: data[indexPath.row].date!)
             cell.priceLabel.textColor = data[indexPath.row].type == "income" ? Constants().greenColor : Constants().redColor
+            
+//            print(totalAmount)
+//            print(totalExpense)
+//            print(totalIncome)
+
+            
             cell.priceLabel.text = "$ \((data[indexPath.row].amount! * 100).rounded()/100)"
         }
-       
         return cell
     }
     

@@ -13,6 +13,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menuTableView.dataSource = self
+        menuTableView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -37,5 +38,34 @@ extension MenuViewController : UITableViewDataSource{
         return cell
     }
     
-    
+}
+
+//MARK: - table view delegate
+extension MenuViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.row){
+            case 0:
+                let storyboard = UIStoryboard(name: "MoreScreen", bundle: nil)
+                let viewC = storyboard.instantiateViewController(withIdentifier: "MainCurrencyViewController") as! MainCurrencyViewController
+                navigationController?.pushViewController(viewC, animated: true)
+                break
+            case 1:
+                let storyboard = UIStoryboard(name: "MoreScreen", bundle: nil)
+                let viewC = storyboard.instantiateViewController(withIdentifier: "PasscodeViewController") as! PasscodeViewController
+                navigationController?.pushViewController(viewC, animated: true)
+                break
+            case 2:
+                let storyboard = UIStoryboard(name: "MoreScreen", bundle: nil)
+                let viewC = storyboard.instantiateViewController(withIdentifier: "InfoViewController") as! InfoViewController
+                navigationController?.pushViewController(viewC, animated: true)
+                break
+            case 3:
+                let storyboard = UIStoryboard(name: "MoreScreen", bundle: nil)
+                let viewC = storyboard.instantiateViewController(withIdentifier: "FeedbackViewController") as! FeedbackViewController
+                navigationController?.pushViewController(viewC, animated: true)
+                break
+            default:
+                break
+            }
+        }
 }

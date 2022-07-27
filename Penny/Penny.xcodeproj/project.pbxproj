@@ -14,12 +14,19 @@
 		68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */; };
 		8440864C2890F31E005D233F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440864B2890F31E005D233F /* MenuViewController.swift */; };
 		990258C7288685D500890200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990258C6288685D500890200 /* Constants.swift */; };
+		992AB38528919BAA0062F649 /* MoreScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992AB38428919BA90062F649 /* MoreScreen.storyboard */; };
+		992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38628919CE30062F649 /* MainCurrencyViewController.swift */; };
+		992AB38928919D850062F649 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38828919D850062F649 /* PasscodeViewController.swift */; };
+		992AB38B28919E690062F649 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38A28919E690062F649 /* InfoViewController.swift */; };
+		992AB38D28919E9F0062F649 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38C28919E9F0062F649 /* FeedbackViewController.swift */; };
 		99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993776FF287F3CA9003330A5 /* AppDelegate.swift */; };
 		99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99377701287F3CA9003330A5 /* SceneDelegate.swift */; };
 		99377707287F3CA9003330A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99377705287F3CA9003330A5 /* Main.storyboard */; };
 		9937770A287F3CA9003330A5 /* Penny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99377708287F3CA9003330A5 /* Penny.xcdatamodeld */; };
 		9937770C287F3CAC003330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9937770B287F3CAC003330A5 /* Assets.xcassets */; };
 		9937770F287F3CAC003330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9937770D287F3CAC003330A5 /* LaunchScreen.storyboard */; };
+		99836059289109970026F2CD /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99836058289109960026F2CD /* CustomLoading.swift */; };
+		9983605B289115010026F2CD /* AdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983605A289115010026F2CD /* AdressModel.swift */; };
 		999041152887162900B80545 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999041142887162900B80545 /* RecordsViewController.swift */; };
 		9990411C2887389100B80545 /* RecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990411B2887389100B80545 /* RecordsModel.swift */; };
 		99AC6F90288762F000B45989 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AC6F8F288762F000B45989 /* DateExtension.swift */; };
@@ -33,6 +40,11 @@
 		68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatogeryViewController.swift; sourceTree = "<group>"; };
 		8440864B2890F31E005D233F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		990258C6288685D500890200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		992AB38428919BA90062F649 /* MoreScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreScreen.storyboard; sourceTree = "<group>"; };
+		992AB38628919CE30062F649 /* MainCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCurrencyViewController.swift; sourceTree = "<group>"; };
+		992AB38828919D850062F649 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
+		992AB38A28919E690062F649 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		992AB38C28919E9F0062F649 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		993776FC287F3CA9003330A5 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		993776FF287F3CA9003330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99377701287F3CA9003330A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +53,8 @@
 		9937770B287F3CAC003330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9937770E287F3CAC003330A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99377710287F3CAC003330A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99836058289109960026F2CD /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
+		9983605A289115010026F2CD /* AdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressModel.swift; sourceTree = "<group>"; };
 		999041142887162900B80545 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		9990411B2887389100B80545 /* RecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsModel.swift; sourceTree = "<group>"; };
 		99AC6F8F288762F000B45989 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -78,6 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				8440864B2890F31E005D233F /* MenuViewController.swift */,
+				992AB38628919CE30062F649 /* MainCurrencyViewController.swift */,
+				992AB38828919D850062F649 /* PasscodeViewController.swift */,
+				992AB38A28919E690062F649 /* InfoViewController.swift */,
+				992AB38C28919E9F0062F649 /* FeedbackViewController.swift */,
 			);
 			path = "More Screen";
 			sourceTree = "<group>";
@@ -126,10 +144,10 @@
 		99377716287F3CD8003330A5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8440864A2890F2D9005D233F /* More Screen */,
 				9990411828871AE500B80545 /* Records Screen */,
 				68E734532890EA3900BBCF2A /* Catogeries */,
 				63AF79EE2888483800240517 /* MapView */,
+				8440864A2890F2D9005D233F /* More Screen */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -140,6 +158,7 @@
 				9937770D287F3CAC003330A5 /* LaunchScreen.storyboard */,
 				99377705287F3CA9003330A5 /* Main.storyboard */,
 				5DE5402B2890E41D0065B83F /* AddTransaction.storyboard */,
+				992AB38428919BA90062F649 /* MoreScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				9990411B2887389100B80545 /* RecordsModel.swift */,
+				9983605A289115010026F2CD /* AdressModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +184,7 @@
 		99AC6F8E288762D400B45989 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				99836058289109960026F2CD /* CustomLoading.swift */,
 				99AC6F8F288762F000B45989 /* DateExtension.swift */,
 			);
 			path = Extension;
@@ -230,6 +251,7 @@
 				9937770F287F3CAC003330A5 /* LaunchScreen.storyboard in Resources */,
 				9937770C287F3CAC003330A5 /* Assets.xcassets in Resources */,
 				99377707287F3CA9003330A5 /* Main.storyboard in Resources */,
+				992AB38528919BAA0062F649 /* MoreScreen.storyboard in Resources */,
 				5DE5402C2890E41D0065B83F /* AddTransaction.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,13 +266,19 @@
 				9937770A287F3CA9003330A5 /* Penny.xcdatamodeld in Sources */,
 				99AC6F90288762F000B45989 /* DateExtension.swift in Sources */,
 				999041152887162900B80545 /* RecordsViewController.swift in Sources */,
+				9983605B289115010026F2CD /* AdressModel.swift in Sources */,
 				68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */,
 				5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */,
 				68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */,
+				992AB38D28919E9F0062F649 /* FeedbackViewController.swift in Sources */,
 				990258C7288685D500890200 /* Constants.swift in Sources */,
+				992AB38B28919E690062F649 /* InfoViewController.swift in Sources */,
+				992AB38928919D850062F649 /* PasscodeViewController.swift in Sources */,
 				8440864C2890F31E005D233F /* MenuViewController.swift in Sources */,
 				99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */,
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
+				99836059289109970026F2CD /* CustomLoading.swift in Sources */,
+				992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */,
 				9990411C2887389100B80545 /* RecordsModel.swift in Sources */,
 				63AF79EC2888482B00240517 /* MapViewController.swift in Sources */,
 			);

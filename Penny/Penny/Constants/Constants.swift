@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 let now = Date()
+var totalAmount = 0.0
+var totalIncome = 0.0
+var totalExpense = 0.0
 
 var redorderData = [
     RecordsModel(date: now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense"),
