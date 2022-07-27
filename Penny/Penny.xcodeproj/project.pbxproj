@@ -12,6 +12,7 @@
 		63AF79EC2888482B00240517 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF79EB2888482B00240517 /* MapViewController.swift */; };
 		68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E734542890EA6700BBCF2A /* CatogeriesViewController.swift */; };
 		68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */; };
+		8440864C2890F31E005D233F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440864B2890F31E005D233F /* MenuViewController.swift */; };
 		990258C7288685D500890200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990258C6288685D500890200 /* Constants.swift */; };
 		99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993776FF287F3CA9003330A5 /* AppDelegate.swift */; };
 		99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99377701287F3CA9003330A5 /* SceneDelegate.swift */; };
@@ -30,6 +31,7 @@
 		63AF79EB2888482B00240517 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		68E734542890EA6700BBCF2A /* CatogeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatogeriesViewController.swift; sourceTree = "<group>"; };
 		68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatogeryViewController.swift; sourceTree = "<group>"; };
+		8440864B2890F31E005D233F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		990258C6288685D500890200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		993776FC287F3CA9003330A5 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		993776FF287F3CA9003330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 				68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */,
 			);
 			path = Catogeries;
+			sourceTree = "<group>";
+		};
+		8440864A2890F2D9005D233F /* More Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8440864B2890F31E005D233F /* MenuViewController.swift */,
+			);
+			path = "More Screen";
 			sourceTree = "<group>";
 		};
 		990258C5288685AB00890200 /* Constants */ = {
@@ -116,6 +126,7 @@
 		99377716287F3CD8003330A5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8440864A2890F2D9005D233F /* More Screen */,
 				9990411828871AE500B80545 /* Records Screen */,
 				68E734532890EA3900BBCF2A /* Catogeries */,
 				63AF79EE2888483800240517 /* MapView */,
@@ -237,6 +248,7 @@
 				5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */,
 				68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */,
 				990258C7288685D500890200 /* Constants.swift in Sources */,
+				8440864C2890F31E005D233F /* MenuViewController.swift in Sources */,
 				99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */,
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
 				9990411C2887389100B80545 /* RecordsModel.swift in Sources */,
