@@ -26,6 +26,8 @@ class AddTransactionsViewController: UIViewController {
     var tempCounter = 0
     var location : CLLocationCoordinate2D?
     
+    var loading : (UIActivityIndicatorView,UIView)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +61,8 @@ class AddTransactionsViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        loading = customAnimation()               //--- when u want to start loading
+        loadingProtocol(with: loading! , true)     //--- above same time
     }
     
     @IBAction func addRecordsClick(_ sender: UIButton) {
@@ -70,6 +74,39 @@ class AddTransactionsViewController: UIViewController {
         }
     }
     
+    func getAdress(Lat : String, Long : String){
+        let session = URLSession(configuration: .default)
+        let url = "https://open.mapquestapi.com/geocoding/v1/reverse?key=gHjgNhdtZj9B9WiAbYvSDvmo1NU61hWi&location="+Lat+",%20"+Long+"&includeNearestIntersection=true"
+        
+//        loading = customAnimation()               //--- when u want to start loading
+//        loadingProtocol(with: loading! , true)
+
+        let mainUrl = URL(string: url)
+        if let tempUrl = mainUrl {
+            let networkTask = session.dataTask(with: tempUrl) { data, respose, e in
+                let decoder = JSONDecoder()
+                if let tempdata = data{
+                    do {
+                        print("done")
+                        let decodedData = try decoder.decode(AdressModel.self, from: tempdata)
+                        print("2")
+                        if let data = decodedData.results?.first?.locations?[0]{
+                            let adress = "\(data.street ?? ""), \(data.adminArea5 ?? ""), \(data.postalCode ?? "")"
+                            DispatchQueue.main.async{
+                                self.currentLocationLabel.text = "Current location: \(adress)"
+                            }
+                        }
+                    }
+                    catch {
+                        print("error \(e)")
+                    }
+                }
+            }
+            networkTask.resume()
+        }
+
+    }
+    
     
 }
 extension AddTransactionsViewController : CLLocationManagerDelegate {
@@ -78,9 +115,11 @@ extension AddTransactionsViewController : CLLocationManagerDelegate {
             tempCounter += 1
             if tempCounter == 6 {
                 location = locations[0].coordinate
+                getAdress(Lat: "\(location!.latitude)", Long: "\(location!.longitude)")
                 currentLocationLabel.text = "Current location :  \(location!.latitude),\(location!.longitude)"
                 locationManager.stopUpdatingLocation()
                 tempCounter = 0
+                loadingProtocol(with: loading! ,false)    // --- to stop loading
             }
         }
     }
