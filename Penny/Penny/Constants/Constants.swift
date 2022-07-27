@@ -8,17 +8,19 @@
 import Foundation
 import UIKit
 
+let now = Date()
+
 var redorderData = [
-    RecordsModel(date: Date.now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense"),
+    RecordsModel(date: now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense"),
     RecordsModel(date: Date(timeIntervalSinceNow: -1.33), name: "Wallmart", amount: 20.00, catagory: "Grocery",type: "expense"),
     RecordsModel(date: Date(timeIntervalSinceNow: -2.33), name: "Lancaster Smockhouse", amount: 20.00, catagory: "Food",type: "expense"),
-    RecordsModel(date: Date.now, name: "Pectrol", amount: 60.00, catagory: "Gas",type: "expense"),
-    RecordsModel(date: Date(timeIntervalSinceNow: -1.33), name: "Wallmart", amount: 70.00, catagory: "Grocery",type: "expense"),
+    RecordsModel(date: now, name: "Pectrol", amount: 60.00, catagory: "Gas",type: "expense"),
+    RecordsModel(date: Date(timeIntervalSinceNow: -1.88), name: "Wallmart", amount: 70.00, catagory: "Grocery",type: "expense"),
     RecordsModel(date: Date(timeIntervalSinceNow: -2.33), name: "Lancaster Smockhouse", amount: 20.00, catagory: "Food",type: "expense"),
-    RecordsModel(date: Date.now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense"),
-    RecordsModel(date: Date(timeIntervalSinceNow: -1.33), name: "Wallmart", amount: 20.00, catagory: "Grocery",type: "expense"),
+    RecordsModel(date: now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense"),
+    RecordsModel(date: Date(timeIntervalSinceNow: -1.93), name: "Wallmart", amount: 20.00, catagory: "Grocery",type: "expense"),
     RecordsModel(date: Date(timeIntervalSinceNow: -2.33), name: "Lancaster Smockhouse", amount: 20.00, catagory: "Food",type: "expense"),
-    RecordsModel(date: Date.now, name: "Innovation", amount: 5000.00, catagory: "Income",type: "income"),
+    RecordsModel(date: now, name: "Innovation", amount: 5000.00, catagory: "Income",type: "income"),
 ]
 
 struct Constants {
