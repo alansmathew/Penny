@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DE5402C2890E41D0065B83F /* AddTransaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DE5402B2890E41D0065B83F /* AddTransaction.storyboard */; };
+		5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE5402E2890E5BD0065B83F /* AddTransactionsViewController.swift */; };
 		63AF79EC2888482B00240517 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF79EB2888482B00240517 /* MapViewController.swift */; };
 		990258C7288685D500890200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990258C6288685D500890200 /* Constants.swift */; };
 		99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993776FF287F3CA9003330A5 /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5DE5402B2890E41D0065B83F /* AddTransaction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTransaction.storyboard; sourceTree = "<group>"; };
+		5DE5402E2890E5BD0065B83F /* AddTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionsViewController.swift; sourceTree = "<group>"; };
 		63AF79EB2888482B00240517 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		990258C6288685D500890200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		993776FC287F3CA9003330A5 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +114,7 @@
 			children = (
 				9937770D287F3CAC003330A5 /* LaunchScreen.storyboard */,
 				99377705287F3CA9003330A5 /* Main.storyboard */,
+				5DE5402B2890E41D0065B83F /* AddTransaction.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				999041142887162900B80545 /* RecordsViewController.swift */,
+				5DE5402E2890E5BD0065B83F /* AddTransactionsViewController.swift */,
 			);
 			path = "Records Screen";
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 				9937770F287F3CAC003330A5 /* LaunchScreen.storyboard in Resources */,
 				9937770C287F3CAC003330A5 /* Assets.xcassets in Resources */,
 				99377707287F3CA9003330A5 /* Main.storyboard in Resources */,
+				5DE5402C2890E41D0065B83F /* AddTransaction.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +219,7 @@
 				9937770A287F3CA9003330A5 /* Penny.xcdatamodeld in Sources */,
 				99AC6F90288762F000B45989 /* DateExtension.swift in Sources */,
 				999041152887162900B80545 /* RecordsViewController.swift in Sources */,
+				5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */,
 				990258C7288685D500890200 /* Constants.swift in Sources */,
 				99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */,
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
