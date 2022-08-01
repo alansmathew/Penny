@@ -48,13 +48,17 @@ class AddTransactionsViewController: UIViewController {
         catogeryView.layer.borderColor = UIColor.gray.cgColor
         catogeryView.layer.borderWidth = 0.15
         catogeryView.layer.cornerRadius = 5
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
+        catogeryLabel.text = selectedCatogery
     }
     override func viewDidAppear(_ animated: Bool) {
         locationManager.delegate = self
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        selectedCatogery = ""
     }
     
     @IBAction func getUserLocationButton(_ sender: UIButton) {
