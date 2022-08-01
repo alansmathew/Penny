@@ -14,7 +14,6 @@ class CatogeriesViewController: UIViewController {
         super.viewDidLoad()
         catogeriesCollectionView.dataSource = self
         catogeriesCollectionView.delegate = self
-
     }
 
 }
@@ -34,7 +33,6 @@ extension CatogeriesViewController : UICollectionViewDataSource{
             cell.collectionView.layer.borderColor = Constants().greenColor.cgColor
             cell.collectionView.layer.cornerRadius = 5
         }
-//        cell.textLabel = Constants().catogeries[indexPath.row]
         return cell
     }
     
@@ -59,5 +57,13 @@ class catogeryCollectionViewCell : UICollectionViewCell{
     @IBOutlet weak var collectionView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+}
+
+//MARK: - collection view delegate
+extension CatogeriesViewController:UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCatogery = Constants().catogeries[indexPath.row]
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 

@@ -13,6 +13,8 @@ var totalAmount = 0.0
 var totalIncome = 0.0
 var totalExpense = 0.0
 
+var selectedCatogery = ""
+
 var redorderData = [
     RecordsModel(date: now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense"),
     RecordsModel(date: Date(timeIntervalSinceNow: -1.33), name: "Wallmart", amount: 20.00, catagory: "Grocery",type: "expense"),
@@ -33,6 +35,4 @@ struct Constants {
     
     let menuItems = ["Main currency settings","Passcode","Info","Feedback"]
     let catogeries = ["Food", "Grocery", "Gas","Medicines","Shopping"]
-
-    
 }
