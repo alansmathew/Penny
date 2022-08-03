@@ -103,18 +103,18 @@ extension AddCatogeryViewController : UITableViewDelegate{
         
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
-            let removeItem = categoryData![indexPath.row]
-            self.context.delete(removeItem)
-            do{
-                try self.context.save()
-            }
-            catch{}
-            self.fetchCategory()
-        }
-        return UISwipeActionsConfiguration(actions: [action])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let action = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
+//            let removeItem = categoryData![indexPath.row]
+//            self.context.delete(removeItem)
+//            do{
+//                try self.context.save()
+//            }
+//            catch{}
+//            self.fetchCategory()
+//        }
+//        return UISwipeActionsConfiguration(actions: [action])
+//    }
 }
 
 //MARK: - catogery text field edit change

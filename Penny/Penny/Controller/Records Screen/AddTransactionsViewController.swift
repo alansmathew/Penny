@@ -59,6 +59,7 @@ class AddTransactionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         catogeryLabel.text = selectedCatogery
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,11 +80,7 @@ class AddTransactionsViewController: UIViewController {
     
     @IBAction func addRecordsClick(_ sender: UIButton) {
         if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text{
-//            let catag = catogeryLabel.text ?? "Food"
-//            let data = RecordsModel(date: date.date, name: title, amount: (amount as NSString).doubleValue, catagory: catag, note: noteTextField.text, type: "income",location:location)
-//            redorderData.insert(data, at: 0)
-//            navigationController?.popViewController(animated: true)
-            
+
             let newRecord = Trans(context: self.context)
             newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
             newRecord.catagory = selectedCatogery
@@ -168,6 +165,9 @@ extension AddTransactionsViewController : CLLocationManagerDelegate {
     }
 }
 
+extension AddTransactionsViewController : UITextViewDelegate{
+    
+}
 
 // if location on go to maps to show details on the map
 // else same page and so details.

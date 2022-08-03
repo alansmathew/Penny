@@ -14,6 +14,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var catogeryCollectionView: UICollectionView!
     let manager = CLLocationManager()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +28,28 @@ class MapViewController: UIViewController {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         mapView.showsUserLocation = true
         
+        fetchCategory()
+        do {
+            databaseData = try context.fetch(Trans.fetchRequest())
+        } catch {}
+        
         let regionSpan = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
         var points : [MKPointAnnotation] = []
         
         var tempLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D()
-        for x in redorderData {
-            if let loc = x.location {
-                tempLocation = loc
-                let tempPoint = MKPointAnnotation()
-                tempPoint.coordinate = loc
-                tempPoint.title = "$ \(x.amount!)"
-                tempPoint.subtitle = x.name
-                points.append(tempPoint)
+        if let data = databaseData{
+            for x in data {
+                let lat = Double(x.lat ?? "0.0")!
+                let long = Double(x.long ?? "0.0")!
+                tempLocation = CLLocationCoordinate2D(latitude:lat, longitude: long)
+                if let loc = tempLocation {
+                    tempLocation = loc
+                    let tempPoint = MKPointAnnotation()
+                    tempPoint.coordinate = loc
+                    tempPoint.title = "$ \(x.amount)"
+                    tempPoint.subtitle = x.name
+                    points.append(tempPoint)
+                }
             }
         }
     
@@ -48,8 +60,15 @@ class MapViewController: UIViewController {
             let region = MKCoordinateRegion(center: dataAvailabele, span: regionSpan)
             mapView.setRegion(region, animated: true)
         }
-       
 
+    }
+    
+    func fetchCategory(){
+        do{
+            categoryData = try context.fetch(CategoryTable.fetchRequest())
+            catogeryCollectionView.reloadData()
+        }
+        catch{}
     }
 }
 
@@ -60,13 +79,15 @@ extension MapViewController : CLLocationManagerDelegate{
 //MARK: - collection View data source
 extension MapViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Constants().catogeries.count
+        return categoryData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = catogeryCollectionView.dequeueReusableCell(withReuseIdentifier: "catogeryColeectionMaoIdentifier", for: indexPath) as! CollectionViewMap
-        let data = Constants().catogeries
-        if indexPath.row < data.count {            cell.titleLabel.text = data[indexPath.row]
+        if let data = categoryData{
+            if indexPath.row < data.count {
+                cell.titleLabel.text = data[indexPath.row].name
+            }
         }
         return cell
     }
@@ -87,15 +108,34 @@ extension MapViewController : UICollectionViewDelegate{
         var points : [MKPointAnnotation] = []
         
         var tempLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D()
-        for x in redorderData {
-            if let loc = x.location {
-                if(x.catagory==Constants().catogeries[indexPath.row]){
-                    tempLocation = loc
-                    let tempPoint = MKPointAnnotation()
-                    tempPoint.coordinate = loc
-                    tempPoint.title = "$ \(x.amount!)"
-                    tempPoint.subtitle = x.name
-                    points.append(tempPoint)
+        
+//        for x in redorderData {
+//            if let loc = x.location {
+//                if(x.catagory==Constants().catogeries[indexPath.row]){
+//                    tempLocation = loc
+//                    let tempPoint = MKPointAnnotation()
+//                    tempPoint.coordinate = loc
+//                    tempPoint.title = "$ \(x.amount!)"
+//                    tempPoint.subtitle = x.name
+//                    points.append(tempPoint)
+//                }
+//            }
+//        }
+        
+        if let data = databaseData, let cat = categoryData{
+            for x in data {
+                if(x.catagory == cat[indexPath.row].name){
+                    let lat = Double(x.lat ?? "0.0")!
+                    let long = Double(x.long ?? "0.0")!
+                    tempLocation = CLLocationCoordinate2D(latitude:lat, longitude: long)
+                    if let loc = tempLocation {
+                        tempLocation = loc
+                        let tempPoint = MKPointAnnotation()
+                        tempPoint.coordinate = loc
+                        tempPoint.title = "$ \(x.amount)"
+                        tempPoint.subtitle = x.name
+                        points.append(tempPoint)
+                    }
                 }
             }
         }
