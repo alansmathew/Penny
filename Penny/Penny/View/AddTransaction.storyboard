@@ -274,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="121.73913043478262" y="90.401785714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Map View Controller-->
         <scene sceneID="9Pf-TS-fYm">
             <objects>
-                <viewController id="RaH-10-jaM" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ShowMapViewController" storyboardIdentifier="ShowMapViewController" id="RaH-10-jaM" customClass="ShowMapViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EwZ-uL-T7I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,6 +296,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dqH-25-eLU"/>
+                    <connections>
+                        <outlet property="mapView" destination="hPU-hP-bS4" id="QUv-fy-RfP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uw-fm-2oY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -422,10 +425,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O47-Bb-sVj">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O47-Bb-sVj">
                                         <rect key="frame" x="110" y="0.0" width="244" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -436,7 +439,7 @@
                                 <rect key="frame" x="20" y="234" width="374" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="catogeryIdentifier" id="cPz-op-RQD" customClass="customAddCatogeryCell" customModule="Penny" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="catogeryIdentifier" id="cPz-op-RQD" customClass="customAddCatogeryCell" customModule="Penny" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cPz-op-RQD" id="FP0-fD-w4g">
@@ -482,6 +485,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Save">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="savebuttonClick:" destination="Bv1-xA-O8A" eventType="touchUpInside" id="Jr9-QG-sHT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3S8-lV-0LS"/>
@@ -504,7 +510,9 @@
                     <navigationItem key="navigationItem" id="Ae8-pK-g2c"/>
                     <connections>
                         <outlet property="addCatogryButton" destination="RRB-90-Z1P" id="PUU-Qf-AOM"/>
+                        <outlet property="categoryTextField" destination="O47-Bb-sVj" id="wAR-VG-OdB"/>
                         <outlet property="catogeryTableView" destination="7Uy-kv-wei" id="jLx-WM-ygP"/>
+                        <outlet property="editCategoryLabel" destination="uVi-Xy-JoH" id="bWN-JP-QmY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2x-oU-Zqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
