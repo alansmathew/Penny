@@ -37,6 +37,11 @@ class AddCatogeryViewController: UIViewController {
         fetchCategory()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            super.touchesBegan(touches, with: event)
+            self.view.endEditing(true)
+    }
+    
     func fetchCategory(){
         do{
             categoryData = try context.fetch(CategoryTable.fetchRequest())
