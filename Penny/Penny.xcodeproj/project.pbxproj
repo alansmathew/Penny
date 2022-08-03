@@ -26,11 +26,12 @@
 		9937770A287F3CA9003330A5 /* Penny.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99377708287F3CA9003330A5 /* Penny.xcdatamodeld */; };
 		9937770C287F3CAC003330A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9937770B287F3CAC003330A5 /* Assets.xcassets */; };
 		9937770F287F3CAC003330A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9937770D287F3CAC003330A5 /* LaunchScreen.storyboard */; };
-		99836059289109970026F2CD /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99836058289109960026F2CD /* CustomLoading.swift */; };
+		9940D60B289ABE420036F108 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D60A289ABE420036F108 /* CustomLoading.swift */; };
+		9940D60D289ABE4F0036F108 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D60C289ABE4F0036F108 /* DateExtension.swift */; };
+		9940D60F289ABE5B0036F108 /* DayAxixsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D60E289ABE5B0036F108 /* DayAxixsFormatter.swift */; };
 		9983605B289115010026F2CD /* AdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983605A289115010026F2CD /* AdressModel.swift */; };
 		999041152887162900B80545 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999041142887162900B80545 /* RecordsViewController.swift */; };
 		9990411C2887389100B80545 /* RecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990411B2887389100B80545 /* RecordsModel.swift */; };
-		99AC6F90288762F000B45989 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AC6F8F288762F000B45989 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,11 +58,12 @@
 		9937770B287F3CAC003330A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9937770E287F3CAC003330A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99377710287F3CAC003330A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		99836058289109960026F2CD /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
+		9940D60A289ABE420036F108 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
+		9940D60C289ABE4F0036F108 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		9940D60E289ABE5B0036F108 /* DayAxixsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAxixsFormatter.swift; sourceTree = "<group>"; };
 		9983605A289115010026F2CD /* AdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressModel.swift; sourceTree = "<group>"; };
 		999041142887162900B80545 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		9990411B2887389100B80545 /* RecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsModel.swift; sourceTree = "<group>"; };
-		99AC6F8F288762F000B45989 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +150,7 @@
 				99377716287F3CD8003330A5 /* Controller */,
 				99377717287F3CEC003330A5 /* View */,
 				990258C5288685AB00890200 /* Constants */,
-				99AC6F8E288762D400B45989 /* Extension */,
+				9940D609289ABE1B0036F108 /* Extenctions and CustomFiles */,
 				9937770B287F3CAC003330A5 /* Assets.xcassets */,
 				99377710287F3CAC003330A5 /* Info.plist */,
 				99377708287F3CA9003330A5 /* Penny.xcdatamodeld */,
@@ -187,6 +189,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9940D609289ABE1B0036F108 /* Extenctions and CustomFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9940D60A289ABE420036F108 /* CustomLoading.swift */,
+				9940D60C289ABE4F0036F108 /* DateExtension.swift */,
+				9940D60E289ABE5B0036F108 /* DayAxixsFormatter.swift */,
+			);
+			path = "Extenctions and CustomFiles";
+			sourceTree = "<group>";
+		};
 		9990411828871AE500B80545 /* Records Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,22 +208,12 @@
 			path = "Records Screen";
 			sourceTree = "<group>";
 		};
-		99AC6F8E288762D400B45989 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				99836058289109960026F2CD /* CustomLoading.swift */,
-				99AC6F8F288762F000B45989 /* DateExtension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		F20673863DC13BA33A75E66E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				6636D1894B89D7D53931F526 /* Pods-Penny.debug.xcconfig */,
 				55C2BAB1EC4AA9D23C7B67A7 /* Pods-Penny.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -333,20 +335,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				9937770A287F3CA9003330A5 /* Penny.xcdatamodeld in Sources */,
-				99AC6F90288762F000B45989 /* DateExtension.swift in Sources */,
 				999041152887162900B80545 /* RecordsViewController.swift in Sources */,
 				9983605B289115010026F2CD /* AdressModel.swift in Sources */,
+				9940D60F289ABE5B0036F108 /* DayAxixsFormatter.swift in Sources */,
 				68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */,
 				5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */,
 				68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */,
 				992AB38D28919E9F0062F649 /* FeedbackViewController.swift in Sources */,
+				9940D60D289ABE4F0036F108 /* DateExtension.swift in Sources */,
 				990258C7288685D500890200 /* Constants.swift in Sources */,
 				992AB38B28919E690062F649 /* InfoViewController.swift in Sources */,
 				992AB38928919D850062F649 /* PasscodeViewController.swift in Sources */,
 				8440864C2890F31E005D233F /* MenuViewController.swift in Sources */,
+				9940D60B289ABE420036F108 /* CustomLoading.swift in Sources */,
 				99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */,
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
-				99836059289109970026F2CD /* CustomLoading.swift in Sources */,
 				992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */,
 				9990411C2887389100B80545 /* RecordsModel.swift in Sources */,
 				63AF79EC2888482B00240517 /* MapViewController.swift in Sources */,
