@@ -56,6 +56,11 @@ class AddTransactionsViewController: UIViewController {
         dateTime.maximumDate = Date()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            super.touchesBegan(touches, with: event)
+            self.view.endEditing(true)
+        }
+    
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         catogeryLabel.text = selectedCatogery
@@ -79,7 +84,9 @@ class AddTransactionsViewController: UIViewController {
     }
     
     @IBAction func addRecordsClick(_ sender: UIButton) {
-        if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text{
+        if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text,
+           titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0, amountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0
+        {
 
             let newRecord = Trans(context: self.context)
             newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -29,9 +29,9 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
         print("saved")
         case .failed:
         print("failed")
-        case .cancelled:
-        print("cancelled")
-            resultAlert(title: "Title", message: "Cancelled", titleForAction: "OK")
+//        case .cancelled:
+//        print("cancelled")
+//            resultAlert(title: "Title", message: "Cancelled", titleForAction: "OK")
             
         
         default:
@@ -47,7 +47,7 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
         let mailComposeVC =  MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(["penny@icloud.com"])
-        mailComposeVC.setSubject("Subject")
+        mailComposeVC.setSubject("FeedBack on Peeny App")
         mailComposeVC.setMessageBody("Message Body", isHTML: false)
         self.present(mailComposeVC, animated: true, completion: nil)
     }
