@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordsViewController: UIViewController {
 
@@ -14,23 +15,32 @@ class RecordsViewController: UIViewController {
     @IBOutlet weak var totalIncomeLabel: UILabel!
     @IBOutlet weak var totalExpenseLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
+    
+
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recordsTableView.dataSource = self
+        recordsTableView.delegate = self
         
         addButton.layer.cornerRadius = addButton.frame.size.height / 2
-//        addButton.layer.borderColor = UIColor.red.cgColor
-//        addButton.layer.borderWidth = 1
         addButton.layer.shadowColor = UIColor.black.cgColor;
         addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         addButton.layer.shadowOpacity = 0.5;
         addButton.layer.shadowRadius = 10.0;
         addButton.layer.masksToBounds = false;
         
+
+        
+//        saveData()
+//        listDatabaseData()
+//        removeData()
+//        temp()
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         tabBarController?.tabBar.isHidden = false
@@ -48,10 +58,68 @@ class RecordsViewController: UIViewController {
         totalAmountLabel.text = "$\(totalAmount)"
         totalIncomeLabel.text = "⬆️ $\(totalIncome)"
         totalExpenseLabel.text = "⬇️ $\(totalExpense)"
+        
+        listDatabaseData()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    func removeData(){
+        listDatabaseData()
+        var removeItem = databaseData![0]
+        context.delete(removeItem)
+        do{
+            try context.save()
+        }
+        catch{}
+        listDatabaseData()
+        removeItem = databaseData![1]
+        context.delete(removeItem)
+        do{
+            try context.save()
+        }
+        catch{}
+        listDatabaseData()
+        
+    }
+    
+    func listDatabaseData(){
+        
+        let fetchRequest = NSFetchRequest<Trans>(entityName: "Trans")
+        let sort = NSSortDescriptor(key: #keyPath(Trans.date), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        
+        do {
+            databaseData = try context.fetch(fetchRequest)
+        } catch {}
+        recordsTableView.reloadData()
+    }
+    
+    func temp(){
+        for x in redorderData{
+            let newRecord = Trans(context: self.context)
+            newRecord.name = x.name
+            newRecord.date = x.date
+            newRecord.amount = x.amount ?? 0.0
+            newRecord.type = x.type
+            newRecord.catagory = x.catagory
+            newRecord.note = x.note
+            if let loc = x.location{
+                newRecord.lat = "\(loc.latitude)"
+                newRecord.long = "\(loc.longitude)"
+            }
+
+            do {
+                try self.context.save()
+            }
+            catch {}
+        }
+        listDatabaseData()
+    }
+    
+    
     
 //MARK: - Buttons
     @IBAction func addTrunsactionClick(_ sender: Any) {
@@ -66,26 +134,64 @@ class RecordsViewController: UIViewController {
 // MARK: - Records DataSorce
 extension RecordsViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        redorderData.count
+        databaseData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = redorderData
+//        let data = databaseData
         let cell = recordsTableView.dequeueReusableCell(withIdentifier: "recordsCell", for: indexPath) as! RecordsTableViewCell
-        if data.count > indexPath.row{
-            cell.nameLabel?.text = data[indexPath.row].name
-            cell.dateLabel.text = Date.getDayOnly(date: data[indexPath.row].date!)
-            cell.timeLabel.text = Date.getTime(date: data[indexPath.row].date!)
-            cell.priceLabel.textColor = data[indexPath.row].type == "income" ? Constants().greenColor : Constants().redColor
-            
-//            print(totalAmount)
-//            print(totalExpense)
-//            print(totalIncome)
+        if let items = databaseData{
+            if items.count > indexPath.row{
+                cell.nameLabel?.text = items[indexPath.row].name
+                cell.dateLabel.text = Date.getDayOnly(date: items[indexPath.row].date!)
+                cell.timeLabel.text = Date.getTime(date: items[indexPath.row].date!)
+                cell.priceLabel.textColor = items[indexPath.row].type == "income" ? Constants().greenColor : Constants().redColor
 
-            
-            cell.priceLabel.text = "$ \((data[indexPath.row].amount! * 100).rounded()/100)"
+                
+                cell.priceLabel.text = "$ \((items[indexPath.row].amount * 100).rounded()/100)"
+            }
         }
         return cell
+    }
+    
+}
+
+// MARK: - records delegate
+extension RecordsViewController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if databaseData?.count ?? 0 > 0 {
+            if let long = databaseData![indexPath.row].long, let lat = databaseData![indexPath.row].lat{
+                
+                let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
+                
+                let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
+                viewC.transactionData = indexPath.row
+                navigationController?.pushViewController(viewC, animated: true)
+                
+            }
+            else {
+                let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
+                
+                let viewC = storyboard.instantiateViewController(withIdentifier: "AddTransactionsViewController") as! AddTransactionsViewController
+                navigationController?.pushViewController(viewC, animated: true)
+            }
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            
+            let removeItem = databaseData![indexPath.row]
+            self.context.delete(removeItem)
+            do{
+                try self.context.save()
+                databaseData?.remove(at: indexPath.row)
+            }
+            catch{}
+            self.recordsTableView.reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [action])
     }
     
 }
@@ -106,13 +212,11 @@ class RecordsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
 
-
-
 // title case in transaction cells
 // shadows in cells
+
+
