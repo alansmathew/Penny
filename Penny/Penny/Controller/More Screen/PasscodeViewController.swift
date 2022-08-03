@@ -2,28 +2,69 @@
 //  PasscodeViewController.swift
 //  Penny
 //
-//  Created by Alan S Mathew on 27/07/22.
+//  Created by user207265 on 27/07/22.
 //
-
+import LocalAuthentication
 import UIKit
 
 class PasscodeViewController: UIViewController {
+ 
 
+    
+   
+    
+    @IBOutlet weak var FaceID: UISwitch!
+    
+    @IBOutlet weak var Passcode: UISwitch!
+    @IBOutlet weak var TouchID: UISwitch!
+    
+    @IBAction func FaceIDFunction(_ sender: Any) {
+        if FaceID.isOn==true{
+            let context = LAContext()
+            var error: NSError? = nil
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
+                let reason = "Please authorize with touch ID"
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason)
+                                       { [weak self] success,error in
+                    DispatchQueue.main.async {
+                        guard success, error == nil else{
+                            let alert = UIAlertController(title: "Fail to Authenticate ", message: "Please try again", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                            
+                            self?.present(alert,animated: true)
+                            return
+                    }
+                    /*let vc = UIViewController()
+                        vc.title = "Welcome"*/
+                    }
+                    
+                }
+        
+    }
+            else{
+                let alert = UIAlertController(title: "Unavailable", message: "You can't use this feature", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                present(alert,animated: true)
+            }
+    }
+    }
+    @IBAction func TouchIDFunction(_ sender: Any) {
+    }
+    @IBAction func PasscodeFunction(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
+        
+        
 
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
 }
+

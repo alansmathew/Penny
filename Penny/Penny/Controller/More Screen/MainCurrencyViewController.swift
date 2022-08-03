@@ -2,28 +2,39 @@
 //  MainCurrencyViewController.swift
 //  Penny
 //
-//  Created by Alan S Mathew on 27/07/22.
+//  Created by user207265 on 27/07/22.
 //
 
 import UIKit
 
 class MainCurrencyViewController: UIViewController {
 
+
+    
+    @IBOutlet weak var currencyTableView: UITableView!
+    let currencies = ["IND","USD","CAD","AUD","AED","EUR","CHF","JPY","NZD","GBP","CNH","RUB"]
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        currencyTableView.delegate = self
+        currencyTableView.dataSource = self
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+   
+}
+extension MainCurrencyViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selcted  \(currencies[indexPath.row])")
     }
-    */
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currencies.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = currencyTableView.dequeueReusableCell(withIdentifier: "currency", for: indexPath)
+        cell.textLabel?.text = currencies[indexPath.row]
+        
+        return  cell
+    }
 }
