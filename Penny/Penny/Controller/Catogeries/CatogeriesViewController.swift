@@ -10,10 +10,33 @@ import UIKit
 class CatogeriesViewController: UIViewController {
 
     @IBOutlet weak var catogeriesCollectionView: UICollectionView!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         catogeriesCollectionView.dataSource = self
         catogeriesCollectionView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        addCategory()
+        fetchCategory()
+    }
+    
+    func fetchCategory(){
+        do{
+            categoryData = try context.fetch(CategoryTable.fetchRequest())
+            catogeriesCollectionView.reloadData()
+        }
+        catch{}
+    }
+    
+    func addCategory(){
+        let newCategory = CategoryTable(context: self.context)
+        newCategory.name = "Grocery"
+        do{
+            try context.save()
+        }catch{}
     }
 
 }
@@ -21,17 +44,18 @@ class CatogeriesViewController: UIViewController {
 //MARK: - catogeries dataSorce
 extension CatogeriesViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Constants().catogeries.count
+        categoryData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = catogeriesCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewIdentifier", for: indexPath) as! catogeryCollectionViewCell
-        let data = Constants().catogeries
-        if indexPath.row < data.count {
-            cell.titleLabel.text = data[indexPath.row]
-            cell.collectionView.layer.borderWidth = 0.3
-            cell.collectionView.layer.borderColor = Constants().greenColor.cgColor
-            cell.collectionView.layer.cornerRadius = 5
+        if let data = categoryData {
+            if indexPath.row < data.count {
+                cell.titleLabel.text = data[indexPath.row].name
+                cell.collectionView.layer.borderWidth = 0.3
+                cell.collectionView.layer.borderColor = Constants().greenColor.cgColor
+                cell.collectionView.layer.cornerRadius = 5
+            }
         }
         return cell
     }
@@ -62,7 +86,7 @@ class catogeryCollectionViewCell : UICollectionViewCell{
 //MARK: - collection view delegate
 extension CatogeriesViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCatogery = Constants().catogeries[indexPath.row]
+        selectedCatogery = categoryData?[indexPath.row].name ?? ""
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -32,8 +32,6 @@ class RecordsViewController: UIViewController {
         addButton.layer.shadowRadius = 10.0;
         addButton.layer.masksToBounds = false;
         
-
-        
 //        saveData()
 //        listDatabaseData()
 //        removeData()
@@ -112,7 +110,7 @@ class RecordsViewController: UIViewController {
             }
 
             do {
-                try self.context.save()
+                try context.save()
             }
             catch {}
         }

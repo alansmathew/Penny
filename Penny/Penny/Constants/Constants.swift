@@ -18,6 +18,7 @@ var selectedCatogery = ""
 
 //database data comes here
 var databaseData:[Trans]?
+var categoryData : [CategoryTable]?
 
 var redorderData = [
     RecordsModel(date: now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense", location:CLLocationCoordinate2D(latitude: 37.33019702, longitude: -122.02471061)),
