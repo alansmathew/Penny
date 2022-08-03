@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need the location to pin point your expense on a map. This location is never shared.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Please allow to continue with Face ID</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
