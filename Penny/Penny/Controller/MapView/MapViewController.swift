@@ -20,6 +20,7 @@ class MapViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         catogeryCollectionView.dataSource = self
+        catogeryCollectionView.delegate = self
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -56,7 +57,7 @@ class MapViewController: UIViewController {
 extension MapViewController : CLLocationManagerDelegate{
 }
 
-//MARK: - collection View Delegate
+//MARK: - collection View data source
 extension MapViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Constants().catogeries.count
@@ -71,6 +72,43 @@ extension MapViewController : UICollectionViewDataSource{
     }
     
     
+}
+
+
+//MARK: - collection Viewdelegate
+extension MapViewController : UICollectionViewDelegate{
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
+        
+        let regionSpan = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
+        var points : [MKPointAnnotation] = []
+        
+        var tempLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D()
+        for x in redorderData {
+            if let loc = x.location {
+                if(x.catagory==Constants().catogeries[indexPath.row]){
+                    tempLocation = loc
+                    let tempPoint = MKPointAnnotation()
+                    tempPoint.coordinate = loc
+                    tempPoint.title = "$ \(x.amount!)"
+                    tempPoint.subtitle = x.name
+                    points.append(tempPoint)
+                }
+            }
+        }
+    
+        mapView.addAnnotations(points)
+
+        mapView.showsUserLocation = true
+        if let dataAvailabele = tempLocation, dataAvailabele.latitude != CLLocationCoordinate2D().latitude, dataAvailabele.longitude != CLLocationCoordinate2D().longitude{
+            let region = MKCoordinateRegion(center: dataAvailabele, span: regionSpan)
+            mapView.setRegion(region, animated: true)
+        }
+    
+    }
 }
 
 class CollectionViewMap : UICollectionViewCell{
