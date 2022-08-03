@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -109,21 +110,6 @@
             </objects>
             <point key="canvasLocation" x="-528.98550724637687" y="97.767857142857139"/>
         </scene>
-        <!--Info View Controller-->
-        <scene sceneID="7KI-BJ-APs">
-            <objects>
-                <viewController restorationIdentifier="InfoViewController" storyboardIdentifier="InfoViewController" id="5Bx-R6-koz" customClass="InfoViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QtV-fi-ENb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="fxG-ih-CLV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kdr-Yh-qRp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="148" y="98"/>
-        </scene>
         <!--Main Currency View Controller-->
         <scene sceneID="A78-g7-Lan">
             <objects>
@@ -164,8 +150,114 @@
             </objects>
             <point key="canvasLocation" x="-1191.304347826087" y="112.5"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="Wwz-NV-ESj">
+            <objects>
+                <viewController restorationIdentifier="InfoViewController" storyboardIdentifier="InfoViewController" id="6AB-8Z-Sju" customClass="InfoViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gjA-SC-x8S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="2qT-qp-Msp">
+                                <rect key="frame" x="20" y="89" width="310" height="638"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="hq7-5b-8Mr">
+                                        <rect key="frame" x="0.0" y="0.0" width="310" height="440"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="GHV-WT-Rsx">
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="374.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="LPu-kh-xvP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="310" height="129.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Penny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tih-Sh-vac">
+                                                                <rect key="frame" x="123" y="0.0" width="64" height="26.5"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                <color key="textColor" name="labelBlack"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h55-oa-gAB">
+                                                                <rect key="frame" x="0.0" y="50.5" width="310" height="79"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <string key="text">Penny is a free and OpenSource Expense tracking Application for iPhone, where users can easily keep track of all their expenses without any annoying ads and it's completely offline with no access permissions necessary or worrying about privacy issues.Penny comes in handy if the user is using multiple banks or wanted to record each and every penny that they spend</string>
+                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="h55-oa-gAB" firstAttribute="leading" secondItem="LPu-kh-xvP" secondAttribute="leadingMargin" id="GPZ-QX-OWq"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="NJt-gU-mld">
+                                                        <rect key="frame" x="55" y="174.5" width="200" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="200" id="fbe-e8-vBb"/>
+                                                            <constraint firstAttribute="width" constant="200" id="yHa-IL-mgk"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="LPu-kh-xvP" firstAttribute="leading" secondItem="GHV-WT-Rsx" secondAttribute="leadingMargin" id="J4Q-ba-9Jw"/>
+                                                    <constraint firstItem="NJt-gU-mld" firstAttribute="leading" secondItem="GHV-WT-Rsx" secondAttribute="leading" constant="55" id="uOU-ap-ZT1"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMW-jQ-mkB">
+                                                <rect key="frame" x="137.5" y="419.5" width="35" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="wMW-jQ-mkB" firstAttribute="leading" secondItem="hq7-5b-8Mr" secondAttribute="leading" constant="137.5" id="oB8-rm-Fnc"/>
+                                            <constraint firstItem="GHV-WT-Rsx" firstAttribute="leading" secondItem="hq7-5b-8Mr" secondAttribute="leadingMargin" id="xEO-Xl-GPx"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RP7-4h-wWu">
+                                        <rect key="frame" x="0.0" y="488" width="240" height="150"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="41S-C1-Vvh"/>
+                                            <constraint firstAttribute="width" constant="240" id="W7h-xj-hoS"/>
+                                        </constraints>
+                                        <string key="text">Developers
+
+Alan Mathew
+Amal Sethunath
+Anjana Varadan
+Anu Benoy
+Jiya Joy
+Thejas Thomas</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ute-Ry-6lf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ute-Ry-6lf" firstAttribute="bottom" secondItem="2qT-qp-Msp" secondAttribute="bottom" constant="135" id="E8U-dP-Ri4"/>
+                            <constraint firstItem="2qT-qp-Msp" firstAttribute="top" secondItem="Ute-Ry-6lf" secondAttribute="top" constant="45" id="caZ-FQ-Acb"/>
+                            <constraint firstItem="2qT-qp-Msp" firstAttribute="leading" secondItem="gjA-SC-x8S" secondAttribute="leadingMargin" id="n5j-iU-cQp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9oA-XH-1Ch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147.82608695652175" y="97.767857142857139"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="logo" width="525" height="375"/>
+        <namedColor name="labelBlack">
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
