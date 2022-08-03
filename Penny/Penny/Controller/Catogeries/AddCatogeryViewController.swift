@@ -18,7 +18,7 @@ class AddCatogeryViewController: UIViewController {
     var isEditingCatogeryIndex = -1
     var selectedIndex : IndexPath?
     
-    var catogeriess = ["Food", "Grocery", "Gas","Medicines","Shopping"]
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +33,35 @@ class AddCatogeryViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        fetchCategory()
+    }
+    
+    func fetchCategory(){
+        do{
+            categoryData = try context.fetch(CategoryTable.fetchRequest())
+            catogeryTableView.reloadData()
+        }
+        catch{}
+    }
     
     @IBAction func savebuttonClick(_ sender: UIButton) {
         if let data = categoryTextField.text, data.trimmingCharacters(in: .whitespacesAndNewlines).count > 0{
-            if isEditingCatogeryIndex > -1 && isEditingCatogeryIndex < catogeriess.count{
-                catogeriess[isEditingCatogeryIndex] = data.trimmingCharacters(in: .whitespacesAndNewlines)
+            if isEditingCatogeryIndex > -1 && isEditingCatogeryIndex < categoryData?.count ?? 0{
+                let updateData = categoryData![isEditingCatogeryIndex]
+                updateData.name = data.trimmingCharacters(in: .whitespacesAndNewlines)
+                do{
+                    try context.save()
+                    fetchCategory()
+                }catch{}
             }
             else{
-                catogeriess.append(data.trimmingCharacters(in: .whitespacesAndNewlines))
+                let newCategory = CategoryTable(context: self.context)
+                newCategory.name = data.trimmingCharacters(in: .whitespacesAndNewlines)
+                do{
+                    try context.save()
+                    fetchCategory()
+                }catch{}
             }
             catogeryTableView.reloadData()
             categoryTextField.text = ""
@@ -55,14 +76,15 @@ class AddCatogeryViewController: UIViewController {
 //MARK: - add Catogery datasorce
 extension AddCatogeryViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return catogeriess.count
+        return categoryData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = catogeryTableView.dequeueReusableCell(withIdentifier: "catogeryIdentifier", for: indexPath) as! customAddCatogeryCell
-        let data = catogeriess
-        if indexPath.row < data.count{
-            cell.catogoryLabel.text = data[indexPath.row]
+        if let data = categoryData{
+            if indexPath.row < data.count{
+                cell.catogoryLabel.text = data[indexPath.row].name
+            }
         }
         return cell
     }
@@ -72,25 +94,27 @@ extension AddCatogeryViewController : UITableViewDataSource{
 extension AddCatogeryViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        editCategoryLabel.text = "Edit caregory"
-        categoryTextField.text = catogeriess[indexPath.row];
+        editCategoryLabel.text = "Edit Category"
+        categoryTextField.text = categoryData?[indexPath.row].name ?? "";
         isEditingCatogeryIndex = indexPath.row
         selectedIndex = indexPath
         
         categoryTextField.becomeFirstResponder()
-//        addCatogryButton.setTitle("Edit", for: .normal);
-//        addCatogryButton.layer.borderColor = UIColor.green.cgColor
-        //print(indexPath.row)
         
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
-            self.catogeriess.remove(at: indexPath.row)
-            self.catogeryTableView.reloadData()
-        }
-        return UISwipeActionsConfiguration(actions: [action])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let action = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
+//            let removeItem = categoryData![indexPath.row]
+//            self.context.delete(removeItem)
+//            do{
+//                try self.context.save()
+//            }
+//            catch{}
+//            self.fetchCategory()
+//        }
+//        return UISwipeActionsConfiguration(actions: [action])
+//    }
 }
 
 //MARK: - catogery text field edit change
@@ -101,7 +125,7 @@ extension AddCatogeryViewController : UITextFieldDelegate{
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.text?.count == 0 {
-            editCategoryLabel.text = "New catogery"
+            editCategoryLabel.text = "New Category"
             if let index = selectedIndex {
                 catogeryTableView.deselectRow(at:index, animated: true)
             }

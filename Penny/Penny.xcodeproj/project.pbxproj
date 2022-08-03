@@ -32,6 +32,7 @@
 		9940D611289AC2740036F108 /* Trans+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D610289AC2740036F108 /* Trans+CoreDataClass.swift */; };
 		9940D614289AC5C70036F108 /* StaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D613289AC5C70036F108 /* StaticsViewController.swift */; };
 		9940D616289AC75C0036F108 /* ShowMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D615289AC75C0036F108 /* ShowMapViewController.swift */; };
+		9940D61D289AD84F0036F108 /* CategoryTable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */; };
 		9983605B289115010026F2CD /* AdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983605A289115010026F2CD /* AdressModel.swift */; };
 		999041152887162900B80545 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999041142887162900B80545 /* RecordsViewController.swift */; };
 		9990411C2887389100B80545 /* RecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990411B2887389100B80545 /* RecordsModel.swift */; };
@@ -67,6 +68,7 @@
 		9940D610289AC2740036F108 /* Trans+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trans+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9940D613289AC5C70036F108 /* StaticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticsViewController.swift; sourceTree = "<group>"; };
 		9940D615289AC75C0036F108 /* ShowMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewController.swift; sourceTree = "<group>"; };
+		9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTable+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		9983605A289115010026F2CD /* AdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressModel.swift; sourceTree = "<group>"; };
 		999041142887162900B80545 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		9990411B2887389100B80545 /* RecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsModel.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		99377718287F3D00003330A5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */,
 				9990411B2887389100B80545 /* RecordsModel.swift */,
 				9983605A289115010026F2CD /* AdressModel.swift */,
 				9940D610289AC2740036F108 /* Trans+CoreDataClass.swift */,
@@ -372,6 +375,7 @@
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
 				992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */,
 				9990411C2887389100B80545 /* RecordsModel.swift in Sources */,
+				9940D61D289AD84F0036F108 /* CategoryTable+CoreDataClass.swift in Sources */,
 				63AF79EC2888482B00240517 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -504,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

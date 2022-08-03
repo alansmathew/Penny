@@ -97,14 +97,15 @@ extension MenuViewController : UITableViewDelegate{
                     let alert = UIAlertController(title: "Error", message: "Mail services are not available", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     present(alert, animated: true, completion: nil)
-                    return 
+                   
                 }
-            
+                else{
+                    self.sendMail()
+                }
                 break
             default:
                 break
             }
-        self.sendMail()
         }
     
 }
