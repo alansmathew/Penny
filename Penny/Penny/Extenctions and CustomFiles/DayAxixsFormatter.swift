@@ -1,13 +1,12 @@
 //
-//  DayAxisFormatter.swift
+//  DayAxixsFormatter.swift
 //  Penny
 //
-//  Created by user207260 on 8/3/22.
+//  Created by user207260 on 03/08/22.
 //
 
 import Foundation
 import Charts
-
 
 let type = 0
 
