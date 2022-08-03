@@ -16,6 +16,9 @@ var totalExpense = 0.0
 
 var selectedCatogery = ""
 
+//database data comes here
+var databaseData:[Trans]?
+
 var redorderData = [
     RecordsModel(date: now, name: "Pectrol", amount: 20.00, catagory: "Gas",type: "expense", location:CLLocationCoordinate2D(latitude: 37.33019702, longitude: -122.02471061)),
     RecordsModel(date: Date(timeIntervalSinceNow: -1.33), name: "Wallmart", amount: 20.00, catagory: "Grocery",type: "expense", location:CLLocationCoordinate2D(latitude: 37.33119702, longitude: -122.02551061)),
