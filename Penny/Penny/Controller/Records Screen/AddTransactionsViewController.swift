@@ -28,6 +28,10 @@ class AddTransactionsViewController: UIViewController {
     
     var loading : (UIActivityIndicatorView,UIView)?
     
+    @IBOutlet weak var segnment: UISegmentedControl!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,11 +52,15 @@ class AddTransactionsViewController: UIViewController {
         catogeryView.layer.borderColor = UIColor.gray.cgColor
         catogeryView.layer.borderWidth = 0.15
         catogeryView.layer.cornerRadius = 5
+        
+        dateTime.maximumDate = Date()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         catogeryLabel.text = selectedCatogery
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         locationManager.delegate = self
     }
@@ -71,12 +79,44 @@ class AddTransactionsViewController: UIViewController {
     
     @IBAction func addRecordsClick(_ sender: UIButton) {
         if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text{
-            let catag = catogeryLabel.text ?? "Food"
-            let data = RecordsModel(date: date.date, name: title, amount: (amount as NSString).doubleValue, catagory: catag, note: noteTextField.text, type: "income",location:location)
-            redorderData.insert(data, at: 0)
-            navigationController?.popViewController(animated: true)
+//            let catag = catogeryLabel.text ?? "Food"
+//            let data = RecordsModel(date: date.date, name: title, amount: (amount as NSString).doubleValue, catagory: catag, note: noteTextField.text, type: "income",location:location)
+//            redorderData.insert(data, at: 0)
+//            navigationController?.popViewController(animated: true)
+            
+            let newRecord = Trans(context: self.context)
+            newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
+            newRecord.catagory = selectedCatogery
+            newRecord.date = date.date
+            newRecord.amount = Double(amount) ?? 0.0
+            newRecord.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
+            newRecord.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if let loc = location{
+                newRecord.lat = "\(loc.latitude)"
+                newRecord.long = "\(loc.longitude)"
+            }
+            do {
+                try self.context.save()
+                navigationController?.popViewController(animated: true)
+            }
+            catch {
+                showAlert(title: "Something Went Wrong", message:"Sorry we cannot add data to database!!Please try again")
+            }
+        }
+        else
+        {
+            showAlert(title:"Invalid Input", message: "Date,Title and Amount are required!!")
         }
     }
+    
+    
+    func showAlert(title : String, message : String){
+            let alertmessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertmessage.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alertmessage ,animated: true, completion: nil)
+        }
+    
     
     func getAdress(Lat : String, Long : String){
         let session = URLSession(configuration: .default)
@@ -91,9 +131,7 @@ class AddTransactionsViewController: UIViewController {
                 let decoder = JSONDecoder()
                 if let tempdata = data{
                     do {
-                        print("done")
                         let decodedData = try decoder.decode(AdressModel.self, from: tempdata)
-                        print("2")
                         if let data = decodedData.results?.first?.locations?[0]{
                             let adress = "\(data.street ?? ""), \(data.adminArea5 ?? ""), \(data.postalCode ?? "")"
                             DispatchQueue.main.async{
@@ -111,16 +149,17 @@ class AddTransactionsViewController: UIViewController {
 
     }
     
-    
 }
+
 extension AddTransactionsViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
-            tempCounter += 1
-            if tempCounter == 6 {
+//            tempCounter += 1
+            if tempCounter == 0 {
                 location = locations[0].coordinate
                 getAdress(Lat: "\(location!.latitude)", Long: "\(location!.longitude)")
                 currentLocationLabel.text = "Current location :  \(location!.latitude),\(location!.longitude)"
+//                print("Current location :  \(location!.latitude),\(location!.longitude)")
                 locationManager.stopUpdatingLocation()
                 tempCounter = 0
                 loadingProtocol(with: loading! ,false)    // --- to stop loading
