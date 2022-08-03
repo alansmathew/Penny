@@ -265,6 +265,7 @@
                         <outlet property="dateTime" destination="A0S-IN-cEK" id="ofP-US-Se8"/>
                         <outlet property="getLocation" destination="6w0-3d-6QF" id="pvx-1D-vjK"/>
                         <outlet property="noteTextField" destination="3lm-zB-gWx" id="ATR-Nc-jM2"/>
+                        <outlet property="segnment" destination="azT-Ui-rH7" id="OXK-L1-5dZ"/>
                         <outlet property="setLocation" destination="wKE-6Y-ppK" id="gvG-EI-Wyj"/>
                         <outlet property="titleTextField" destination="pGF-M5-HT2" id="vaT-ti-TkM"/>
                     </connections>
