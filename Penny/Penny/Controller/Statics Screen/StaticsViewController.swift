@@ -26,6 +26,7 @@ class StatictsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        segCase = 0
         daysSegnmentController.selectedSegmentIndex = 0
         filterRequest(requestDate: dateForMonth)
         cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
