@@ -35,4 +35,16 @@ extension Date{
         let monthYear = dateFormatter.string(from: date)
         return monthYear;
     }
+    static func getMonthOnly(date : Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        return month;
+    }
+    static func getYear(date : Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let year = dateFormatter.string(from: date)
+        return year;
+    }
 }

@@ -11,61 +11,78 @@ import CoreData
 
 class StatictsViewController: UIViewController {
 
-    @IBOutlet weak var monthStack: UIStackView!
     @IBOutlet weak var cuttentMonthLabel: UILabel!
-    @IBOutlet weak var dateAndTimePicker: UIDatePicker!
     @IBOutlet weak var daysSegnmentController: UISegmentedControl!
     @IBOutlet weak var barChart: BarChartView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var dateForMonth = Date()
+    var segCase = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        monthStack.isHidden = true
-        dateAndTimePicker.maximumDate = Date()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        dateAndTimePicker.date = Date()
         daysSegnmentController.selectedSegmentIndex = 0
-        filterRequest(requestDate: Date())
+        filterRequest(requestDate: dateForMonth)
         cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
     }
     
     @IBAction func leftMoveButton(_ sender: UIButton) {
         var dateComponent = DateComponents()
-        dateComponent.month = -1
-        let pastDate = Calendar.current.date(byAdding: dateComponent, to: dateForMonth)
-        if let past = pastDate{
-            dateForMonth = past
-            cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
+        
+        if segCase == 0 {
+            dateComponent.month = -1
+            let pastDate = Calendar.current.date(byAdding: dateComponent, to: dateForMonth)
+            if let past = pastDate{
+                dateForMonth = past
+                cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
+                filterRequest(requestDate: dateForMonth, typeOfSetup: "daily")
+            }
         }
+        else{
+            dateComponent.year = -1
+            let pastDate = Calendar.current.date(byAdding: dateComponent, to: dateForMonth)
+            if let past = pastDate{
+                dateForMonth = past
+                cuttentMonthLabel.text = Date.getYear(date: dateForMonth)
+            }
+        }
+  
     }
     
     @IBAction func rightMoveMonth(_ sender: UIButton) {
         let currrentDate = Date()
-        
         var dateComponent = DateComponents()
-        dateComponent.month = 1
+        
+        if segCase == 0 {
+            dateComponent.month = 1
+        }
+        else{
+            dateComponent.year = 1
+        }
+    
         let futureDate = Calendar.current.date(byAdding: dateComponent, to: dateForMonth)
         if let future = futureDate{
             if future < currrentDate {
                 dateForMonth = future
-                cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
+                cuttentMonthLabel.text = segCase == 0 ? Date.getMonthYear(date: dateForMonth) : Date.getYear(date: dateForMonth)
+                filterRequest(requestDate: dateForMonth, typeOfSetup: "daily")
             }
             else{
                 showAlert(title: "Future Alert", message: "We are not that advanced to get into future yet. If we found out a way, we will definatly update app to incorporate future expenses")
             }
         }
+ 
     }
     
-    func filterRequest(requestDate : Date, typeOfSetup : String? = "day"){
+    func filterRequest(requestDate : Date, typeOfSetup : String? = "daily"){
         var filterData : [Trans] = []
-        if typeOfSetup == "day"{
+        if typeOfSetup == "daily"{
             if let data = databaseData{
                 for x in data{
-                    if Date.getDayOnly(date: x.date!) == Date.getDayOnly(date: requestDate) {
+                    if Date.getMonthOnly(date: x.date!) == Date.getMonthOnly(date: requestDate) {
                         filterData.append(x)
                     }
                 }
@@ -86,28 +103,21 @@ class StatictsViewController: UIViewController {
         
     }
     
-    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        filterRequest(requestDate: sender.date)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func segnmentValueChange(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0:
-                monthStack.isHidden = true
-                dateAndTimePicker.isHidden = false
-                dateAndTimePicker.date = Date()
-                filterRequest(requestDate: Date())
-                return
-            case 1 :
-                monthStack.isHidden = false
-                dateAndTimePicker.isHidden = true
+                segCase = 0
                 cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
                 filterRequest(requestDate: Date())
                 return
+            case 1 :
+                segCase = 1
+                cuttentMonthLabel.text = Date.getYear(date: dateForMonth)
+                filterRequest(requestDate: Date())
+                return
             default :
-                monthStack.isHidden = true
-                dateAndTimePicker.isHidden = false
+                segCase = 0
+                cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
                 return
         }
     }
@@ -123,7 +133,7 @@ class StatictsViewController: UIViewController {
 //MARK: - chart view delegate
 extension StatictsViewController : ChartViewDelegate{
     
-    func barchartSetup(barCartData : [Trans], typeOfSetup : String? = "day"){
+    func barchartSetup(barCartData : [Trans], typeOfSetup : String? = "daily"){
         
         barChart.rightAxis.enabled = false
         barChart.legend.enabled = false
@@ -141,24 +151,24 @@ extension StatictsViewController : ChartViewDelegate{
         var yValsAssets : [BarChartDataEntry] = []
         var yValsExpenses : [BarChartDataEntry] = []
         
-        if typeOfSetup == "day"{
-            bartype = 1
-            minXvalue = 24.59
+        if typeOfSetup == "daily"{
+            bartype = 0
+            minXvalue = 31
             for x in barCartData {
-                let currentvalue = Double(Date.get24hrforChart(date: x.date!))!
+                let currentvalue = Double(Date.getDayOnly(date: x.date!))!
                 minXvalue = currentvalue < minXvalue ? currentvalue : minXvalue
                 maxXValue = currentvalue > maxXValue ? currentvalue : maxXValue
 
                 if(x.type == "income"){
-                    yValsAssets.append(BarChartDataEntry(x: Double(Date.get24hrforChart(date: x.date!))! , y: x.amount))
+                    yValsAssets.append(BarChartDataEntry(x: Double(Date.getDayOnly(date: x.date!))! , y: x.amount))
                 }
                 else{
-                    yValsExpenses.append(BarChartDataEntry(x: Double(Date.get24hrforChart(date: x.date!))! , y: x.amount))
+                    yValsExpenses.append(BarChartDataEntry(x: Double(Date.getDayOnly(date: x.date!))! , y: x.amount))
                 }
             }
-            print(minXvalue,maxXValue)
+//            print(minXvalue,maxXValue)
             xAxis.axisMinimum = minXvalue == 0.0 ? minXvalue : minXvalue - 1
-            xAxis.axisMaximum = maxXValue >= 24.0 ? maxXValue : maxXValue + 1
+            xAxis.axisMaximum = maxXValue >= 31 ? maxXValue : maxXValue + 1
             print(minXvalue,maxXValue)
         }
         else{
