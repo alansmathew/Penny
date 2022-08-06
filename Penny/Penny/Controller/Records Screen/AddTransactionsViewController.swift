@@ -85,8 +85,7 @@ class AddTransactionsViewController: UIViewController {
     
     @IBAction func addRecordsClick(_ sender: UIButton) {
         if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text,
-           titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0, amountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0
-        {
+           titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0, amountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0{
 
             let newRecord = Trans(context: self.context)
             newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -172,9 +171,6 @@ extension AddTransactionsViewController : CLLocationManagerDelegate {
     }
 }
 
-extension AddTransactionsViewController : UITextViewDelegate{
-    
-}
 
 // if location on go to maps to show details on the map
 // else same page and so details.

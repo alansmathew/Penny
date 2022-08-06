@@ -440,12 +440,14 @@
                                 </constraints>
                                 <segments>
                                     <segment title="Day"/>
-                                    <segment title="Week"/>
                                     <segment title="Month"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segnmentValueChange:" destination="vMb-3M-HX5" eventType="valueChanged" id="gUe-vg-Z1G"/>
+                                </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="h3X-av-9qy">
-                                <rect key="frame" x="99.5" y="275" width="215" height="20.5"/>
+                                <rect key="frame" x="99.5" y="285" width="215" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⬆ $5000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88h-ws-p1C">
                                         <rect key="frame" x="0.0" y="0.0" width="102.5" height="20.5"/>
@@ -465,24 +467,76 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcZ-Oy-fIz" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="325.5" width="374" height="400"/>
+                                <rect key="frame" x="20" y="335.5" width="374" height="400"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="KUM-Gj-skK"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ccv-Rz-7ge">
-                                <rect key="frame" x="147.5" y="215" width="119" height="50"/>
+                                <rect key="frame" x="134" y="215" width="146" height="40"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="08q-7b-SQh">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="50"/>
-                                    </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6dH-tE-41M">
+                                        <rect key="frame" x="2.5" y="0.0" width="141.5" height="20"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="08q-7b-SQh">
+                                                <rect key="frame" x="0.0" y="0.0" width="141.5" height="20"/>
+                                                <connections>
+                                                    <action selector="datePickerValueChanged:" destination="vMb-3M-HX5" eventType="valueChanged" id="a55-p9-Utg"/>
+                                                </connections>
+                                            </datePicker>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="08q-7b-SQh" secondAttribute="trailing" id="3ta-RL-Pi2"/>
+                                            <constraint firstItem="08q-7b-SQh" firstAttribute="leading" secondItem="6dH-tE-41M" secondAttribute="leading" id="9dp-Qj-OBg"/>
+                                            <constraint firstAttribute="bottom" secondItem="08q-7b-SQh" secondAttribute="bottom" id="nwQ-bP-vtu"/>
+                                            <constraint firstItem="08q-7b-SQh" firstAttribute="top" secondItem="6dH-tE-41M" secondAttribute="top" id="zJe-x5-LlC"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NCl-UH-7eD">
+                                        <rect key="frame" x="0.0" y="20" width="146" height="20"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWy-hV-l8R">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="bpy-rP-jas"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="&lt;">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="leftMoveButton:" destination="vMb-3M-HX5" eventType="touchUpInside" id="WVw-ph-M0Q"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Of8-Y7-JeF">
+                                                <rect key="frame" x="50" y="0.0" width="46" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="KrO-H2-ZPm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQl-3W-95B">
+                                                <rect key="frame" x="106" y="0.0" width="40" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="qfX-pw-Wbf"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="&gt;">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="rightMoveMonth:" destination="vMb-3M-HX5" eventType="touchUpInside" id="C1J-D9-vOR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="08q-7b-SQh" firstAttribute="top" secondItem="ccv-Rz-7ge" secondAttribute="top" id="4O5-YW-Ha5"/>
-                                    <constraint firstAttribute="trailing" secondItem="08q-7b-SQh" secondAttribute="trailing" id="C1l-Cl-rMH"/>
-                                    <constraint firstItem="08q-7b-SQh" firstAttribute="leading" secondItem="ccv-Rz-7ge" secondAttribute="leading" id="Ywe-S7-g90"/>
-                                    <constraint firstAttribute="bottom" secondItem="08q-7b-SQh" secondAttribute="bottom" id="gBb-Hz-oVJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NCl-UH-7eD" secondAttribute="trailing" id="Fra-IL-H6e"/>
+                                    <constraint firstItem="NCl-UH-7eD" firstAttribute="leading" secondItem="ccv-Rz-7ge" secondAttribute="leading" id="pBF-LG-5Tq"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -495,7 +549,7 @@
                             <constraint firstItem="ccv-Rz-7ge" firstAttribute="centerX" secondItem="643-tk-gAF" secondAttribute="centerX" id="WWr-qx-fyG"/>
                             <constraint firstItem="rcZ-Oy-fIz" firstAttribute="leading" secondItem="C1L-c8-3pC" secondAttribute="leading" constant="20" id="Ydt-dQ-Ii5"/>
                             <constraint firstItem="h3X-av-9qy" firstAttribute="centerX" secondItem="643-tk-gAF" secondAttribute="centerX" id="ccD-nc-EHj"/>
-                            <constraint firstItem="h3X-av-9qy" firstAttribute="top" secondItem="ccv-Rz-7ge" secondAttribute="bottom" constant="10" id="hHG-86-d2X"/>
+                            <constraint firstItem="h3X-av-9qy" firstAttribute="top" secondItem="ccv-Rz-7ge" secondAttribute="bottom" constant="30" id="hHG-86-d2X"/>
                             <constraint firstItem="xLK-m3-zCB" firstAttribute="centerX" secondItem="643-tk-gAF" secondAttribute="centerX" id="ima-pr-4d2"/>
                             <constraint firstItem="rcZ-Oy-fIz" firstAttribute="top" secondItem="h3X-av-9qy" secondAttribute="bottom" constant="30" id="r78-2Z-qCn"/>
                             <constraint firstItem="h3X-av-9qy" firstAttribute="centerX" secondItem="643-tk-gAF" secondAttribute="centerX" id="t7S-GH-4Bx"/>
@@ -505,6 +559,10 @@
                     <navigationItem key="navigationItem" title="Statistics" id="llB-Mq-GfI"/>
                     <connections>
                         <outlet property="barChart" destination="rcZ-Oy-fIz" id="A45-7g-3En"/>
+                        <outlet property="cuttentMonthLabel" destination="Of8-Y7-JeF" id="evs-eJ-sPb"/>
+                        <outlet property="dateAndTimePicker" destination="08q-7b-SQh" id="PQZ-r7-xQB"/>
+                        <outlet property="daysSegnmentController" destination="xLK-m3-zCB" id="qw5-gR-mtU"/>
+                        <outlet property="monthStack" destination="NCl-UH-7eD" id="nqL-UM-TCy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNk-lJ-QVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

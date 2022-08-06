@@ -8,7 +8,7 @@
 import Foundation
 import Charts
 
-let type = 0
+var bartype = 0
 
 public class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
     weak var chart: BarLineChartViewBase?
@@ -24,7 +24,7 @@ public class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         
-        switch type {
+        switch bartype {
         case 0:
             let days = Int(value)
             var appendix: String
@@ -37,8 +37,8 @@ public class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
             return days == 0 ? "" : String(format: "%d\(appendix)", days)
             
         case 1:
-            let week = Int(value)
-            return week == 0 ? "" : String(format: "%d Week", week)
+            let hr = Int(value)
+            return String(format: "%d", hr)
         case 2:
             let month = Int(value)
             return month == 0 ? "" : months[month-1]
