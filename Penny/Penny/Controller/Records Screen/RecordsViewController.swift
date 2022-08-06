@@ -160,7 +160,6 @@ extension RecordsViewController:UITableViewDelegate{
             if let long = databaseData![indexPath.row].long, let lat = databaseData![indexPath.row].lat{
                 
                 let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
-                
                 let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
                 viewC.transactionData = indexPath.row
                 navigationController?.pushViewController(viewC, animated: true)
@@ -168,8 +167,8 @@ extension RecordsViewController:UITableViewDelegate{
             }
             else {
                 let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
-                
                 let viewC = storyboard.instantiateViewController(withIdentifier: "AddTransactionsViewController") as! AddTransactionsViewController
+                viewC.dataFromRecords = databaseData![indexPath.row]
                 navigationController?.pushViewController(viewC, animated: true)
             }
         }
