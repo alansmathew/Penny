@@ -14,6 +14,8 @@ class StatictsViewController: UIViewController {
     @IBOutlet weak var cuttentMonthLabel: UILabel!
     @IBOutlet weak var daysSegnmentController: UISegmentedControl!
     @IBOutlet weak var barChart: BarChartView!
+    @IBOutlet weak var assetsLabel: UILabel!
+    @IBOutlet weak var libeltyLabel: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var dateForMonth = Date()
@@ -47,6 +49,7 @@ class StatictsViewController: UIViewController {
             if let past = pastDate{
                 dateForMonth = past
                 cuttentMonthLabel.text = Date.getYear(date: dateForMonth)
+                filterRequest(requestDate: dateForMonth, typeOfSetup: "Monthly")
             }
         }
   
@@ -68,7 +71,12 @@ class StatictsViewController: UIViewController {
             if future < currrentDate {
                 dateForMonth = future
                 cuttentMonthLabel.text = segCase == 0 ? Date.getMonthYear(date: dateForMonth) : Date.getYear(date: dateForMonth)
-                filterRequest(requestDate: dateForMonth, typeOfSetup: "daily")
+                if segCase == 0{
+                    filterRequest(requestDate: dateForMonth, typeOfSetup: "daily")
+                }
+                else{
+                    filterRequest(requestDate: dateForMonth, typeOfSetup: "Monthly")
+                }
             }
             else{
                 showAlert(title: "Future Alert", message: "We are not that advanced to get into future yet. If we found out a way, we will definatly update app to incorporate future expenses")
@@ -87,18 +95,17 @@ class StatictsViewController: UIViewController {
                     }
                 }
             }
-            barchartSetup(barCartData: filterData)
         }
         else{
             if let data = databaseData{
                 for x in data{
-                    if Date.getDayOnly(date: x.date!) == Date.getDayOnly(date: requestDate) {
+                    if Date.getYear(date: x.date!) == Date.getYear(date: requestDate) {
                         filterData.append(x)
                     }
                 }
             }
-            barchartSetup(barCartData: filterData)
         }
+        barchartSetup(barCartData: filterData,typeOfSetup: typeOfSetup)
 
         
     }
@@ -107,17 +114,21 @@ class StatictsViewController: UIViewController {
         switch sender.selectedSegmentIndex {
             case 0:
                 segCase = 0
+                dateForMonth = Date()
                 cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
                 filterRequest(requestDate: Date())
                 return
             case 1 :
                 segCase = 1
+                dateForMonth = Date()
                 cuttentMonthLabel.text = Date.getYear(date: dateForMonth)
-                filterRequest(requestDate: Date())
+                filterRequest(requestDate: dateForMonth, typeOfSetup: "Monthly")
                 return
             default :
                 segCase = 0
+                dateForMonth = Date()
                 cuttentMonthLabel.text = Date.getMonthYear(date: dateForMonth)
+                filterRequest(requestDate: dateForMonth, typeOfSetup: "Daily")
                 return
         }
     }
@@ -151,6 +162,12 @@ extension StatictsViewController : ChartViewDelegate{
         var yValsAssets : [BarChartDataEntry] = []
         var yValsExpenses : [BarChartDataEntry] = []
         
+        var totAssets = 0.0
+        var totLibilities = 0.0
+        
+        assetsLabel.text = "⬆️ $0.0"
+        libeltyLabel.text = "⬇️ $0.0"
+        
         if typeOfSetup == "daily"{
             bartype = 0
             minXvalue = 31
@@ -160,19 +177,53 @@ extension StatictsViewController : ChartViewDelegate{
                 maxXValue = currentvalue > maxXValue ? currentvalue : maxXValue
 
                 if(x.type == "income"){
+                    totAssets += x.amount
                     yValsAssets.append(BarChartDataEntry(x: Double(Date.getDayOnly(date: x.date!))! , y: x.amount))
                 }
                 else{
+                    totLibilities += x.amount
                     yValsExpenses.append(BarChartDataEntry(x: Double(Date.getDayOnly(date: x.date!))! , y: x.amount))
                 }
             }
-//            print(minXvalue,maxXValue)
+            
+            assetsLabel.text = "⬆️ $\(totAssets)"
+            libeltyLabel.text = "⬇️ $\(totLibilities)"
+            
             xAxis.axisMinimum = minXvalue == 0.0 ? minXvalue : minXvalue - 1
             xAxis.axisMaximum = maxXValue >= 31 ? maxXValue : maxXValue + 1
-            print(minXvalue,maxXValue)
+
         }
         else{
+            bartype = 2
+            minXvalue = 12
+            yValsAssets = []
+            yValsExpenses = []
             
+            for counterX in 1...12{
+                var asset = 0.0
+                var libelity = 0.0
+                for data in barCartData {
+                    
+                    if Int(Date.getMonthOnly(date: data.date!)) == counterX{
+                        if data.type == "income" {
+                            asset += data.amount
+                            totAssets += data.amount
+                        }
+                        else{
+                            libelity += data.amount
+                            totLibilities += data.amount
+                        }
+                    }
+                }
+            
+                yValsAssets.append(BarChartDataEntry(x: Double(counterX), y: asset))
+                yValsExpenses.append(BarChartDataEntry(x: Double(counterX), y: libelity ))
+               
+            }
+            assetsLabel.text = "⬆️ $\(totAssets)"
+            libeltyLabel.text = "⬇️ $\(totLibilities)"
+            xAxis.axisMinimum = 0.0
+            xAxis.axisMaximum = 12.0
         }
        
         

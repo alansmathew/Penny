@@ -539,9 +539,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Statistics" id="llB-Mq-GfI"/>
                     <connections>
+                        <outlet property="assetsLabel" destination="88h-ws-p1C" id="Ijf-0r-Ic8"/>
                         <outlet property="barChart" destination="rcZ-Oy-fIz" id="A45-7g-3En"/>
                         <outlet property="cuttentMonthLabel" destination="Of8-Y7-JeF" id="evs-eJ-sPb"/>
                         <outlet property="daysSegnmentController" destination="xLK-m3-zCB" id="qw5-gR-mtU"/>
+                        <outlet property="libeltyLabel" destination="bb6-NJ-NE9" id="548-ea-9c9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNk-lJ-QVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
