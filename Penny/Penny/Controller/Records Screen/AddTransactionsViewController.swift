@@ -10,6 +10,7 @@ import CoreLocation
 
 class AddTransactionsViewController: UIViewController {
 
+    @IBOutlet weak var segnment: UISegmentedControl!
     @IBOutlet weak var dateTime: UIDatePicker!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
@@ -22,13 +23,14 @@ class AddTransactionsViewController: UIViewController {
     @IBOutlet weak var addExpenseButton: UIButton!
     @IBOutlet weak var currentLocationLabel: UILabel!
     
+    var dataFromRecords : Trans?
+    
     let locationManager = CLLocationManager()
     var tempCounter = 0
     var location : CLLocationCoordinate2D?
     
     var loading : (UIActivityIndicatorView,UIView)?
-    
-    @IBOutlet weak var segnment: UISegmentedControl!
+
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -54,6 +56,7 @@ class AddTransactionsViewController: UIViewController {
         catogeryView.layer.cornerRadius = 5
         
         dateTime.maximumDate = Date()
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,6 +67,12 @@ class AddTransactionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
         catogeryLabel.text = selectedCatogery
+        
+        
+        if let dataRecord = dataFromRecords{
+            setupEditScreen(data: dataRecord)
+            catogeryLabel.text = dataRecord.catagory!
+        }
     
     }
     
@@ -73,6 +82,16 @@ class AddTransactionsViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         selectedCatogery = ""
+    }
+    
+    func setupEditScreen(data : Trans){
+        segnment.selectedSegmentIndex = data.type == "income" ? 0 : 1
+        dateTime.date = data.date!
+        titleTextField.text = data.name
+        amountTextField.text = "\(data.amount)"
+        print(data.catagory!)
+        catogeryLabel.text = data.catagory!
+        noteTextField.text = data.note ?? ""
     }
     
     @IBAction func getUserLocationButton(_ sender: UIButton) {
@@ -113,13 +132,11 @@ class AddTransactionsViewController: UIViewController {
         }
     }
     
-    
     func showAlert(title : String, message : String){
             let alertmessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertmessage.addAction(UIAlertAction(title: "OK", style: .cancel))
             self.present(alertmessage ,animated: true, completion: nil)
         }
-    
     
     func getAdress(Lat : String, Long : String){
         let session = URLSession(configuration: .default)
