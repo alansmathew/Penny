@@ -14,9 +14,6 @@ class InfoViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = true
-    }
     
 
     /*

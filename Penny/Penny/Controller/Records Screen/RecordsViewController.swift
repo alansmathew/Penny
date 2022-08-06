@@ -144,7 +144,6 @@ extension RecordsViewController : UITableViewDataSource {
                 cell.dateLabel.text = Date.getDayOnly(date: items[indexPath.row].date!)
                 cell.timeLabel.text = Date.getTime(date: items[indexPath.row].date!)
                 cell.priceLabel.textColor = items[indexPath.row].type == "income" ? Constants().greenColor : Constants().redColor
-
                 
                 cell.priceLabel.text = "$ \((items[indexPath.row].amount * 100).rounded()/100)"
             }
