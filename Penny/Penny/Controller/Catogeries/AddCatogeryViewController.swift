@@ -61,12 +61,27 @@ class AddCatogeryViewController: UIViewController {
                 }catch{}
             }
             else{
-                let newCategory = CategoryTable(context: self.context)
-                newCategory.name = data.trimmingCharacters(in: .whitespacesAndNewlines)
-                do{
-                    try context.save()
-                    fetchCategory()
-                }catch{}
+                var flag = true
+                let value = data.trimmingCharacters(in: .whitespacesAndNewlines)
+                if let catogery = categoryData{
+                    for x in catogery{
+                        if x.name?.lowercased() == value.lowercased() {
+                            flag = false
+                        }
+                    }
+                }
+                if flag{
+                    let newCategory = CategoryTable(context: self.context)
+                    newCategory.name = data.trimmingCharacters(in: .whitespacesAndNewlines)
+                    do{
+                        try context.save()
+                        fetchCategory()
+                    }catch{}
+                }
+                else{
+                    showAlert(title: "Already Added !", message: "The catogery you are trying to add is already in the list.")
+                }
+               
             }
             catogeryTableView.reloadData()
             categoryTextField.text = ""
@@ -75,6 +90,11 @@ class AddCatogeryViewController: UIViewController {
         selectedIndex = nil
     }
     
+    func showAlert(title : String, message : String){
+            let alertmessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertmessage.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alertmessage ,animated: true, completion: nil)
+        }
     
 }
 
