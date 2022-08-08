@@ -119,17 +119,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eQP-L5-6le">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyr-50-tPv">
+                                <rect key="frame" x="10" y="44" width="394" height="74"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INV-25-ZBW">
+                                        <rect key="frame" x="10" y="15" width="128" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVe-1H-eQp">
+                                        <rect key="frame" x="10" y="42" width="374" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="textColor" name="labelBlack"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="iVe-1H-eQp" firstAttribute="top" secondItem="INV-25-ZBW" secondAttribute="bottom" constant="9" id="Anw-wt-2fI"/>
+                                    <constraint firstItem="INV-25-ZBW" firstAttribute="top" secondItem="fyr-50-tPv" secondAttribute="top" constant="15" id="EW3-AP-sqv"/>
+                                    <constraint firstItem="INV-25-ZBW" firstAttribute="leading" secondItem="fyr-50-tPv" secondAttribute="leading" constant="10" id="TQB-uE-sW1"/>
+                                    <constraint firstAttribute="trailing" secondItem="iVe-1H-eQp" secondAttribute="trailing" constant="10" id="VAn-Tu-HgF"/>
+                                    <constraint firstItem="iVe-1H-eQp" firstAttribute="leading" secondItem="fyr-50-tPv" secondAttribute="leading" constant="10" id="oLQ-dy-hbX"/>
+                                    <constraint firstAttribute="bottom" secondItem="iVe-1H-eQp" secondAttribute="bottom" constant="15" id="qN5-sD-hef"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eQP-L5-6le">
+                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="currency" id="Qlr-8m-eDS">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="currency" id="Qlr-8m-eDS" customClass="CustomCurrencyCell" customModule="Penny" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qlr-8m-eDS" id="ag3-IE-u0P">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bYh-sm-zLc">
+                                                    <rect key="frame" x="10" y="0.0" width="394" height="50.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ME6-RW-a3Q">
+                                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="50.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyx-4o-6Ri">
+                                                            <rect key="frame" x="352.5" y="0.0" width="41.5" height="50.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="9gq-4S-n2b"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bYh-sm-zLc" secondAttribute="trailing" constant="10" id="6vi-hn-rO8"/>
+                                                <constraint firstAttribute="bottom" secondItem="bYh-sm-zLc" secondAttribute="bottom" id="Jzk-xi-tkr"/>
+                                                <constraint firstItem="bYh-sm-zLc" firstAttribute="top" secondItem="ag3-IE-u0P" secondAttribute="top" id="RXM-Mc-QUe"/>
+                                                <constraint firstItem="bYh-sm-zLc" firstAttribute="leading" secondItem="ag3-IE-u0P" secondAttribute="leading" constant="10" id="a36-8p-EQf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="countryLabel" destination="ME6-RW-a3Q" id="fdr-Zq-Rd0"/>
+                                            <outlet property="currencySymbol" destination="hyx-4o-6Ri" id="4a4-zY-V3r"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -137,19 +195,24 @@
                         <viewLayoutGuide key="safeArea" id="X2e-wo-Nbf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eQP-L5-6le" firstAttribute="top" secondItem="X2e-wo-Nbf" secondAttribute="top" id="JBI-co-AnY"/>
-                            <constraint firstItem="X2e-wo-Nbf" firstAttribute="bottom" secondItem="eQP-L5-6le" secondAttribute="bottom" id="eA8-8r-ijc"/>
+                            <constraint firstItem="eQP-L5-6le" firstAttribute="top" secondItem="fyr-50-tPv" secondAttribute="bottom" constant="20" id="SmF-SP-VIe"/>
+                            <constraint firstItem="fyr-50-tPv" firstAttribute="top" secondItem="X2e-wo-Nbf" secondAttribute="top" id="TBY-3b-Czj"/>
+                            <constraint firstAttribute="bottom" secondItem="eQP-L5-6le" secondAttribute="bottom" id="eA8-8r-ijc"/>
+                            <constraint firstItem="X2e-wo-Nbf" firstAttribute="trailing" secondItem="fyr-50-tPv" secondAttribute="trailing" constant="10" id="huc-7T-bh5"/>
                             <constraint firstItem="X2e-wo-Nbf" firstAttribute="trailing" secondItem="eQP-L5-6le" secondAttribute="trailing" id="rcD-2O-hbe"/>
+                            <constraint firstItem="fyr-50-tPv" firstAttribute="leading" secondItem="X2e-wo-Nbf" secondAttribute="leading" constant="10" id="ru3-K4-8ZM"/>
                             <constraint firstItem="eQP-L5-6le" firstAttribute="leading" secondItem="X2e-wo-Nbf" secondAttribute="leading" id="x5H-fI-wPc"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currencyTableView" destination="eQP-L5-6le" id="rEh-5a-XCR"/>
+                        <outlet property="currentCurrencyLabel" destination="iVe-1H-eQp" id="5tp-eb-8IS"/>
+                        <outlet property="currentCurrencyView" destination="fyr-50-tPv" id="OXD-WY-czj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nAI-pR-bPE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1191.304347826087" y="112.5"/>
+            <point key="canvasLocation" x="-1243.4782608695652" y="97.767857142857139"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="Wwz-NV-ESj">

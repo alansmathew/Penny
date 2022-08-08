@@ -46,7 +46,7 @@ class MapViewController: UIViewController {
                     tempLocation = loc
                     let tempPoint = MKPointAnnotation()
                     tempPoint.coordinate = loc
-                    tempPoint.title = "$ \(x.amount)"
+                    tempPoint.title = "\(defaultCurrency) \(x.amount)"
                     tempPoint.subtitle = x.name
                     points.append(tempPoint)
                 }
@@ -115,7 +115,7 @@ extension MapViewController : UICollectionViewDelegate{
 //                    tempLocation = loc
 //                    let tempPoint = MKPointAnnotation()
 //                    tempPoint.coordinate = loc
-//                    tempPoint.title = "$ \(x.amount!)"
+//                    tempPoint.title = "\(defaultCurrency) \(x.amount!)"
 //                    tempPoint.subtitle = x.name
 //                    points.append(tempPoint)
 //                }
@@ -132,7 +132,7 @@ extension MapViewController : UICollectionViewDelegate{
                         tempLocation = loc
                         let tempPoint = MKPointAnnotation()
                         tempPoint.coordinate = loc
-                        tempPoint.title = "$ \(x.amount)"
+                        tempPoint.title = "\(defaultCurrency) \(x.amount)"
                         tempPoint.subtitle = x.name
                         points.append(tempPoint)
                     }
