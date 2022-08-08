@@ -68,7 +68,6 @@ class AddTransactionsViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         catogeryLabel.text = selectedCatogery
         
-        
         if let dataRecord = dataFromRecords{
             setupEditScreen(data: dataRecord)
             catogeryLabel.text = dataRecord.catagory!

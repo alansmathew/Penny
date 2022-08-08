@@ -38,7 +38,7 @@ class ShowMapViewController: UIViewController {
                 tempLocation = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.00)
                     let tempPoint = MKPointAnnotation()
                 tempPoint.coordinate = tempLocation!
-                    tempPoint.title = "$ \(transaction.amount)"
+                    tempPoint.title = "\(defaultCurrency) \(transaction.amount)"
                     tempPoint.subtitle = transaction.name
                     point = tempPoint
                 }

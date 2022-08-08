@@ -32,10 +32,8 @@ class RecordsViewController: UIViewController {
         addButton.layer.shadowRadius = 10.0;
         addButton.layer.masksToBounds = false;
         
-//        saveData()
-//        listDatabaseData()
-//        removeData()
-//        temp()
+        getDefaultCurrency()
+        print(defaultCurrency);
         
     }
     
@@ -44,18 +42,20 @@ class RecordsViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         recordsTableView.reloadData()
         
-        for x in redorderData{
-            if x.type == "income" {
-                totalIncome += x.amount ?? 0.0
-            }
-            else{
-                totalExpense += x.amount ?? 0.0
+        if let data = databaseData{
+            for x in data{
+                if x.type == "income" {
+                    totalIncome += x.amount
+                }
+                else{
+                    totalExpense += x.amount
+                }
             }
         }
         totalAmount = totalIncome - totalExpense
-        totalAmountLabel.text = "$\(totalAmount)"
-        totalIncomeLabel.text = "⬆️ $\(totalIncome)"
-        totalExpenseLabel.text = "⬇️ $\(totalExpense)"
+        totalAmountLabel.text = "\(defaultCurrency)\(totalAmount)"
+        totalIncomeLabel.text = "⬆️ \(defaultCurrency)\(totalIncome)"
+        totalExpenseLabel.text = "⬇️ \(defaultCurrency)\(totalExpense)"
         
         listDatabaseData()
     }
@@ -95,28 +95,15 @@ class RecordsViewController: UIViewController {
         recordsTableView.reloadData()
     }
     
-    func temp(){
-        for x in redorderData{
-            let newRecord = Trans(context: self.context)
-            newRecord.name = x.name
-            newRecord.date = x.date
-            newRecord.amount = x.amount ?? 0.0
-            newRecord.type = x.type
-            newRecord.catagory = x.catagory
-            newRecord.note = x.note
-            if let loc = x.location{
-                newRecord.lat = "\(loc.latitude)"
-                newRecord.long = "\(loc.longitude)"
-            }
-
-            do {
-                try context.save()
-            }
-            catch {}
+    func getDefaultCurrency(){
+        if let currency = UserDefaults.standard.string(forKey: "CURRENCY_SYMBOL"){
+            defaultCurrency = currency
+            defaultCurrencyIndex = UserDefaults.standard.integer(forKey: "CURRENCY_INDEX")
         }
-        listDatabaseData()
+        else{
+            defaultCurrency = "$"
+        }
     }
-    
     
     
 //MARK: - Buttons
@@ -145,7 +132,7 @@ extension RecordsViewController : UITableViewDataSource {
                 cell.timeLabel.text = Date.getTime(date: items[indexPath.row].date!)
                 cell.priceLabel.textColor = items[indexPath.row].type == "income" ? Constants().greenColor : Constants().redColor
                 
-                cell.priceLabel.text = "$ \((items[indexPath.row].amount * 100).rounded()/100)"
+                cell.priceLabel.text = "\(defaultCurrency) \((items[indexPath.row].amount * 100).rounded()/100)"
             }
         }
         return cell

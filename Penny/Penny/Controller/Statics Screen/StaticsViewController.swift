@@ -166,8 +166,8 @@ extension StatictsViewController : ChartViewDelegate{
         var totAssets = 0.0
         var totLibilities = 0.0
         
-        assetsLabel.text = "⬆️ $0.0"
-        libeltyLabel.text = "⬇️ $0.0"
+        assetsLabel.text = "⬆️ \(defaultCurrency)0.0"
+        libeltyLabel.text = "⬇️ \(defaultCurrency)0.0"
         
         if typeOfSetup == "daily"{
             bartype = 0
@@ -187,8 +187,8 @@ extension StatictsViewController : ChartViewDelegate{
                 }
             }
             
-            assetsLabel.text = "⬆️ $\(totAssets)"
-            libeltyLabel.text = "⬇️ $\(totLibilities)"
+            assetsLabel.text = "⬆️ \(defaultCurrency)\(totAssets)"
+            libeltyLabel.text = "⬇️ \(defaultCurrency)\(totLibilities)"
             
             xAxis.axisMinimum = minXvalue == 0.0 ? minXvalue : minXvalue - 1
             xAxis.axisMaximum = maxXValue >= 31 ? maxXValue : maxXValue + 1
@@ -221,8 +221,8 @@ extension StatictsViewController : ChartViewDelegate{
                 yValsExpenses.append(BarChartDataEntry(x: Double(counterX), y: libelity ))
                
             }
-            assetsLabel.text = "⬆️ $\(totAssets)"
-            libeltyLabel.text = "⬇️ $\(totLibilities)"
+            assetsLabel.text = "⬆️ \(defaultCurrency)\(totAssets)"
+            libeltyLabel.text = "⬇️ \(defaultCurrency)\(totLibilities)"
             xAxis.axisMinimum = 0.0
             xAxis.axisMaximum = 12.0
         }
@@ -231,7 +231,7 @@ extension StatictsViewController : ChartViewDelegate{
         let leftAxisFormatter = NumberFormatter()
         leftAxisFormatter.minimumFractionDigits = 0
         leftAxisFormatter.maximumFractionDigits = 1
-        leftAxisFormatter.positivePrefix = "$ "
+        leftAxisFormatter.positivePrefix = "\(defaultCurrency) "
         
         let leftAxis = barChart.leftAxis
         leftAxis.labelFont = .systemFont(ofSize: 10)
