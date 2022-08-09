@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     
     // We set manager object to the CLLocationmanager -Delegate
     let manager = CLLocationManager()
+    //We set context by adding core data to app
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
@@ -24,7 +25,7 @@ class MapViewController: UIViewController {
     }
     
     // used didAppear once map shows up to register values for GPS location servies
-    // setting properties of manager
+    // setting properties of manager and catogeryCollectiomView
     override func viewDidAppear(_ animated: Bool) {
         catogeryCollectionView.dataSource = self
         catogeryCollectionView.delegate = self
@@ -41,9 +42,9 @@ class MapViewController: UIViewController {
         // span determines the scale of our zooming into the map
         let regionSpan = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
         var points : [MKPointAnnotation] = []
-        
         var tempLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D()
-        //setting coordinate, title, subtitle
+        
+        //setting coordinate, title(amount), subtitle(name) for the data from data base
         if let data = databaseData{
             for x in data {
                 let lat = Double(x.lat ?? "0.0")!
@@ -59,9 +60,9 @@ class MapViewController: UIViewController {
                 }
             }
         }
-    
+        // add points to the map view
         mapView.addAnnotations(points)
-
+        //show user the location in map view
         mapView.showsUserLocation = true
         if let dataAvailabele = tempLocation, dataAvailabele.latitude != CLLocationCoordinate2D().latitude, dataAvailabele.longitude != CLLocationCoordinate2D().longitude{
             let region = MKCoordinateRegion(center: dataAvailabele, span: regionSpan)
@@ -69,7 +70,7 @@ class MapViewController: UIViewController {
         }
 
     }
-    
+    //fetch category from data base
     func fetchCategory(){
         do{
             categoryData = try context.fetch(CategoryTable.fetchRequest())
@@ -88,7 +89,7 @@ extension MapViewController : UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryData?.count ?? 0
     }
-    
+    // collection view of category
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = catogeryCollectionView.dequeueReusableCell(withReuseIdentifier: "catogeryColeectionMaoIdentifier", for: indexPath) as! CollectionViewMap
         if let data = categoryData{
@@ -111,24 +112,14 @@ extension MapViewController : UICollectionViewDelegate{
         let allAnnotations = self.mapView.annotations
         self.mapView.removeAnnotations(allAnnotations)
         
+        // span determines the scale of our zooming into the map
         let regionSpan = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
         var points : [MKPointAnnotation] = []
         
         var tempLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D()
-        
-//        for x in redorderData {
-//            if let loc = x.location {
-//                if(x.catagory==Constants().catogeries[indexPath.row]){
-//                    tempLocation = loc
-//                    let tempPoint = MKPointAnnotation()
-//                    tempPoint.coordinate = loc
-//                    tempPoint.title = "\(defaultCurrency) \(x.amount!)"
-//                    tempPoint.subtitle = x.name
-//                    points.append(tempPoint)
-//                }
-//            }
-//        }
-        
+
+        //filtering location based on category
+        //setting coordinate, title(amount), subtitle(name) for the data from data base
         if let data = databaseData, let cat = categoryData{
             for x in data {
                 if(x.catagory == cat[indexPath.row].name){
@@ -146,9 +137,9 @@ extension MapViewController : UICollectionViewDelegate{
                 }
             }
         }
-    
+        //add points to mapview
         mapView.addAnnotations(points)
-
+        //show user the location in map view
         mapView.showsUserLocation = true
         if let dataAvailabele = tempLocation, dataAvailabele.latitude != CLLocationCoordinate2D().latitude, dataAvailabele.longitude != CLLocationCoordinate2D().longitude{
             let region = MKCoordinateRegion(center: dataAvailabele, span: regionSpan)
@@ -158,6 +149,7 @@ extension MapViewController : UICollectionViewDelegate{
     }
 }
 
+//collection view of categories
 class CollectionViewMap : UICollectionViewCell{
     @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
