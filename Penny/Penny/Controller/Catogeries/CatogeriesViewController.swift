@@ -23,6 +23,7 @@ class CatogeriesViewController: UIViewController {
         fetchCategory()
     }
     
+    //func to fetch categories from db
     func fetchCategory(){
         do{
             categoryData = try context.fetch(CategoryTable.fetchRequest())
@@ -31,6 +32,7 @@ class CatogeriesViewController: UIViewController {
         catch{}
     }
     
+    //save new categories in db
     func addCategory(){
         let newCategory = CategoryTable(context: self.context)
         newCategory.name = "Grocery"
