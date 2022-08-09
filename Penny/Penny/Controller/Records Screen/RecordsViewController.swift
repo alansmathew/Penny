@@ -33,7 +33,7 @@ class RecordsViewController: UIViewController {
         addButton.layer.masksToBounds = false;
         
         getDefaultCurrency()
-        print(defaultCurrency);
+//        print(defaultCurrency);
         
     }
     
@@ -86,7 +86,7 @@ class RecordsViewController: UIViewController {
     func listDatabaseData(){
         
         let fetchRequest = NSFetchRequest<Trans>(entityName: "Trans")
-        let sort = NSSortDescriptor(key: #keyPath(Trans.date), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Trans.date), ascending:false)
         fetchRequest.sortDescriptors = [sort]
         
         do {
