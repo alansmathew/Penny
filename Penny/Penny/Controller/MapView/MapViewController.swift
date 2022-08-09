@@ -13,6 +13,8 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var catogeryCollectionView: UICollectionView!
+    
+    // We set manager object to the CLLocationmanager -Delegate
     let manager = CLLocationManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -20,6 +22,9 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // used didAppear once map shows up to register values for GPS location servies
+    // setting properties of manager
     override func viewDidAppear(_ animated: Bool) {
         catogeryCollectionView.dataSource = self
         catogeryCollectionView.delegate = self
@@ -33,10 +38,12 @@ class MapViewController: UIViewController {
             databaseData = try context.fetch(Trans.fetchRequest())
         } catch {}
         
+        // span determines the scale of our zooming into the map
         let regionSpan = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
         var points : [MKPointAnnotation] = []
         
         var tempLocation : CLLocationCoordinate2D? = CLLocationCoordinate2D()
+        //setting coordinate, title, subtitle
         if let data = databaseData{
             for x in data {
                 let lat = Double(x.lat ?? "0.0")!
