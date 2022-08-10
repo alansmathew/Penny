@@ -18,94 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfE-a8-Mpb">
-                                <rect key="frame" x="20" y="100" width="374" height="238"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="211" translatesAutoresizingMaskIntoConstraints="NO" id="4eL-Gw-OPL">
+                                <rect key="frame" x="20" y="201.5" width="374" height="31"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="211" translatesAutoresizingMaskIntoConstraints="NO" id="4eL-Gw-OPL">
-                                        <rect key="frame" x="20" y="20" width="334" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Face ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNA-F8-9yQ">
-                                                <rect key="frame" x="0.0" y="1.5" width="74" height="27.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PS5-vc-DoB">
-                                                <rect key="frame" x="285" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="FaceID:" destination="Y6W-OH-hqX" eventType="valueChanged" id="uGs-vQ-Sdm"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="334" id="1FL-L9-FMc"/>
-                                            <constraint firstItem="PS5-vc-DoB" firstAttribute="leading" secondItem="WNA-F8-9yQ" secondAttribute="trailing" constant="211" id="KG0-Oi-fON"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="198" translatesAutoresizingMaskIntoConstraints="NO" id="Y7e-RP-MDM">
-                                        <rect key="frame" x="20" y="106" width="334" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzk-VL-87m">
-                                                <rect key="frame" x="0.0" y="1.5" width="87" height="27.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wqr-Fk-v3f">
-                                                <rect key="frame" x="285" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="TouchID:" destination="Y6W-OH-hqX" eventType="valueChanged" id="r9u-kp-hOX"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="189" translatesAutoresizingMaskIntoConstraints="NO" id="q2M-DA-jbY">
-                                        <rect key="frame" x="20" y="187" width="334" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXh-N6-k5Z">
-                                                <rect key="frame" x="0.0" y="2" width="96" height="27.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4u7-22-El6">
-                                                <rect key="frame" x="285" y="0.0" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="Passcode:" destination="Y6W-OH-hqX" eventType="valueChanged" id="3at-xr-aeY"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Face ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNA-F8-9yQ">
+                                        <rect key="frame" x="0.0" y="6" width="114" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PS5-vc-DoB">
+                                        <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                    </switch>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="4eL-Gw-OPL" firstAttribute="centerX" secondItem="LfE-a8-Mpb" secondAttribute="centerX" id="9md-PF-RnG"/>
-                                    <constraint firstItem="4eL-Gw-OPL" firstAttribute="top" secondItem="cHQ-r6-WNk" secondAttribute="top" constant="20" id="Chd-ac-o2R"/>
-                                    <constraint firstItem="4eL-Gw-OPL" firstAttribute="leading" secondItem="Y7e-RP-MDM" secondAttribute="leading" id="GF2-Yx-6Yu"/>
-                                    <constraint firstAttribute="bottom" secondItem="4eL-Gw-OPL" secondAttribute="bottom" constant="187" id="MsJ-pN-FO0"/>
-                                    <constraint firstItem="Y7e-RP-MDM" firstAttribute="top" secondItem="4eL-Gw-OPL" secondAttribute="bottom" constant="55" id="OM1-fz-8mc"/>
-                                    <constraint firstItem="4eL-Gw-OPL" firstAttribute="leading" secondItem="q2M-DA-jbY" secondAttribute="leading" id="Rd3-KB-aRt"/>
-                                    <constraint firstAttribute="trailing" secondItem="4eL-Gw-OPL" secondAttribute="trailing" constant="20.5" id="cIx-ny-MDQ"/>
-                                    <constraint firstItem="q2M-DA-jbY" firstAttribute="top" secondItem="Y7e-RP-MDM" secondAttribute="bottom" constant="50" id="dhI-FC-g4y"/>
-                                    <constraint firstItem="4eL-Gw-OPL" firstAttribute="leading" secondItem="cHQ-r6-WNk" secondAttribute="leading" constant="20" id="sft-Kp-zlC"/>
-                                    <constraint firstItem="4eL-Gw-OPL" firstAttribute="centerX" secondItem="q2M-DA-jbY" secondAttribute="centerX" id="tJJ-g2-KZj"/>
+                                    <constraint firstAttribute="trailing" secondItem="PS5-vc-DoB" secondAttribute="trailing" id="UOe-Kd-wV9"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="MfH-iC-qJ5"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="cHQ-r6-WNk"/>
-                            </scrollView>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authentication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfJ-Lh-sXR">
+                                <rect key="frame" x="20" y="54" width="374" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <color key="textColor" name="labelBlack"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVS-eU-tF3">
+                                <rect key="frame" x="20" y="99.5" width="374" height="72"/>
+                                <string key="text">By turning on authentication, your expenses will be secure with the default iPhones authentication settings. None of the authentication data will be saved or used for any other purposes</string>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="LfE-a8-Mpb" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="IVh-dp-H87"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="LfE-a8-Mpb" secondAttribute="bottom" constant="524" id="fVc-Zf-N2U"/>
-                            <constraint firstItem="LfE-a8-Mpb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="56" id="yn7-0p-38p"/>
+                            <constraint firstItem="KVS-eU-tF3" firstAttribute="top" secondItem="hfJ-Lh-sXR" secondAttribute="bottom" constant="20" id="L09-OR-yLb"/>
+                            <constraint firstItem="KVS-eU-tF3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="R8M-C9-cav"/>
+                            <constraint firstItem="hfJ-Lh-sXR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ShG-x9-Omh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hfJ-Lh-sXR" secondAttribute="trailing" constant="20" id="Zcu-m7-NaL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KVS-eU-tF3" secondAttribute="trailing" constant="20" id="cA5-xK-W7D"/>
+                            <constraint firstItem="4eL-Gw-OPL" firstAttribute="top" secondItem="KVS-eU-tF3" secondAttribute="bottom" constant="30" id="sVA-aI-mEV"/>
+                            <constraint firstItem="4eL-Gw-OPL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="smW-GJ-NzV"/>
+                            <constraint firstItem="hfJ-Lh-sXR" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="uRx-2s-yIu"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4eL-Gw-OPL" secondAttribute="trailing" constant="20" id="wqs-KC-Xej"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="FaceID" destination="PS5-vc-DoB" id="8ls-Ol-iAD"/>
-                        <outlet property="Passcode" destination="4u7-22-El6" id="kmo-iF-eID"/>
-                        <outlet property="TouchID" destination="Wqr-Fk-v3f" id="FsF-Z1-TUs"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

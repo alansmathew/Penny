@@ -24,14 +24,10 @@ class AddTransactionsViewController: UIViewController {
     @IBOutlet weak var currentLocationLabel: UILabel!
     
     var dataFromRecords : Trans?
-    
     let locationManager = CLLocationManager()
     var tempCounter = 0
     var location : CLLocationCoordinate2D?
-    
     var loading : (UIActivityIndicatorView,UIView)?
-
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -56,7 +52,6 @@ class AddTransactionsViewController: UIViewController {
         catogeryView.layer.cornerRadius = 5
         
         dateTime.maximumDate = Date()
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,7 +65,6 @@ class AddTransactionsViewController: UIViewController {
         
         if let dataRecord = dataFromRecords{
             setupEditScreen(data: dataRecord)
-            catogeryLabel.text = dataRecord.catagory!
         }
     
     }
@@ -88,9 +82,16 @@ class AddTransactionsViewController: UIViewController {
         dateTime.date = data.date!
         titleTextField.text = data.name
         amountTextField.text = "\(data.amount)"
-        print(data.catagory!)
-        catogeryLabel.text = data.catagory!
+        catogeryLabel.text = selectedCatogery.count > 0 ? selectedCatogery : data.catagory!
         noteTextField.text = data.note ?? ""
+        addExpenseButton.setTitle("Edit Record", for: .normal)
+        if let lat = data.lat, let long = data.long {
+            location = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.00)
+//            if let latt = lat, let longg = long {
+//
+//            }
+            getAdress(Lat: lat, Long: long) // need to come from map view
+        }
     }
     
     @IBAction func getUserLocationButton(_ sender: UIButton) {
@@ -103,32 +104,55 @@ class AddTransactionsViewController: UIViewController {
     
     @IBAction func addRecordsClick(_ sender: UIButton) {
         if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text,
-           titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0, amountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0{
-
-            let newRecord = Trans(context: self.context)
-            newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
-            newRecord.catagory = selectedCatogery
-            newRecord.date = date.date
-            newRecord.amount = Double(amount) ?? 0.0
-            newRecord.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
-            newRecord.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+           titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0, amountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0,
+           let cat = catogeryLabel.text{
             
-            if let loc = location{
-                newRecord.lat = "\(loc.latitude)"
-                newRecord.long = "\(loc.longitude)"
+            if let data = dataFromRecords{
+                data.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
+                data.catagory = cat
+                data.date = date.date
+                data.amount = Double(amount) ?? 0.0
+                data.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
+                data.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if let loc = location{
+                    data.lat = "\(loc.latitude)"
+                    data.long = "\(loc.longitude)"
+                }
+            }
+            else{
+                let newRecord = Trans(context: self.context)
+                newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
+                newRecord.catagory = selectedCatogery
+                newRecord.date = date.date
+                newRecord.amount = Double(amount) ?? 0.0
+                newRecord.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
+                newRecord.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if let loc = location{
+                    newRecord.lat = "\(loc.latitude)"
+                    newRecord.long = "\(loc.longitude)"
+                }
             }
             do {
                 try self.context.save()
-                navigationController?.popViewController(animated: true)
+                navigationController?.popToRootViewController(animated: true)
             }
             catch {
-                showAlert(title: "Something Went Wrong", message:"Sorry we cannot add data to database!!Please try again")
+                showAlert(title: "Something Went Wrong", message:"Sorry we cannot add data to database!! Please try again")
             }
         }
         else
         {
-            showAlert(title:"Invalid Input", message: "Date,Title and Amount are required!!")
+            showAlert(title:"Invalid Input", message: "Date,Title,Amount and Category are required fields!!")
         }
+    }
+    
+    @IBAction func setLocationButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
+        let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
+        viewC.setLocationData = dataFromRecords
+        navigationController?.pushViewController(viewC, animated: true)
     }
     
     func showAlert(title : String, message : String){

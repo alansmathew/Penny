@@ -38,7 +38,7 @@
                                 </segments>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w9K-1J-MmK">
-                                <rect key="frame" x="30" y="148" width="354" height="316"/>
+                                <rect key="frame" x="30" y="148" width="354" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4KW-nS-SeH">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
@@ -121,8 +121,8 @@
                                                 <rect key="frame" x="80" y="0.0" width="274" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAW-tH-1EL">
-                                                        <rect key="frame" x="20" y="20" width="0.0" height="0.0"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="5" y="20" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -144,7 +144,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="cAW-tH-1EL" firstAttribute="leading" secondItem="scS-1o-eeS" secondAttribute="leading" constant="20" id="BCp-ax-hPS"/>
+                                                    <constraint firstItem="cAW-tH-1EL" firstAttribute="leading" secondItem="scS-1o-eeS" secondAttribute="leading" constant="5" id="BCp-ax-hPS"/>
                                                     <constraint firstAttribute="trailing" secondItem="R3k-jM-6P8" secondAttribute="trailing" id="JOk-6E-Uci"/>
                                                     <constraint firstItem="R3k-jM-6P8" firstAttribute="top" secondItem="scS-1o-eeS" secondAttribute="top" id="SBv-IX-Izo"/>
                                                     <constraint firstAttribute="bottom" secondItem="R3k-jM-6P8" secondAttribute="bottom" id="VEz-RU-XFM"/>
@@ -210,7 +210,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Set Location"/>
                                                         <connections>
-                                                            <segue destination="RaH-10-jaM" kind="show" id="AJV-oc-ZX5"/>
+                                                            <action selector="setLocationButton:" destination="FuO-5w-3Kq" eventType="touchUpInside" id="E5V-16-iC3"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -220,8 +220,8 @@
                                             <constraint firstAttribute="height" constant="40" id="Pcd-tt-qmi"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current location : 345 lester Street, waterloo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaS-v4-iSO">
-                                        <rect key="frame" x="0.0" y="300" width="354" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaS-v4-iSO">
+                                        <rect key="frame" x="0.0" y="300" width="354" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.59606617689999997" green="0.59600520130000001" blue="0.60016065839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -279,30 +279,68 @@
             <objects>
                 <viewController restorationIdentifier="ShowMapViewController" storyboardIdentifier="ShowMapViewController" id="RaH-10-jaM" customClass="ShowMapViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EwZ-uL-T7I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hPU-hP-bS4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUO-sh-wOb">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <color key="backgroundColor" name="green"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="tyj-yL-w30"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Tap on the map to set a location">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="addLocationButton:" destination="RaH-10-jaM" eventType="touchUpInside" id="YIe-nM-BWZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26o-VI-SUU">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <color key="backgroundColor" name="green"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="bXw-hF-6Jd"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit Record">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="editButtonClick:" destination="RaH-10-jaM" eventType="touchUpInside" id="qww-Cg-5JP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SDI-pO-tl1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="SDI-pO-tl1" firstAttribute="trailing" secondItem="26o-VI-SUU" secondAttribute="trailing" constant="20" id="7xt-Jg-0wa"/>
                             <constraint firstItem="hPU-hP-bS4" firstAttribute="top" secondItem="EwZ-uL-T7I" secondAttribute="top" id="9nP-8K-VjT"/>
+                            <constraint firstItem="26o-VI-SUU" firstAttribute="leading" secondItem="SDI-pO-tl1" secondAttribute="leading" constant="20" id="QUK-gl-XhX"/>
                             <constraint firstAttribute="bottom" secondItem="hPU-hP-bS4" secondAttribute="bottom" id="VHf-WM-uQa"/>
                             <constraint firstItem="SDI-pO-tl1" firstAttribute="trailing" secondItem="hPU-hP-bS4" secondAttribute="trailing" id="Zct-v7-aOE"/>
+                            <constraint firstItem="PUO-sh-wOb" firstAttribute="leading" secondItem="SDI-pO-tl1" secondAttribute="leading" constant="20" id="Zjd-1R-XMk"/>
                             <constraint firstItem="hPU-hP-bS4" firstAttribute="leading" secondItem="SDI-pO-tl1" secondAttribute="leading" id="fd9-cJ-98E"/>
+                            <constraint firstItem="SDI-pO-tl1" firstAttribute="bottom" secondItem="26o-VI-SUU" secondAttribute="bottom" constant="20" id="hUl-mC-qF1"/>
+                            <constraint firstItem="SDI-pO-tl1" firstAttribute="bottom" secondItem="PUO-sh-wOb" secondAttribute="bottom" constant="20" id="sL8-Dz-RzJ"/>
+                            <constraint firstItem="SDI-pO-tl1" firstAttribute="trailing" secondItem="PUO-sh-wOb" secondAttribute="trailing" constant="20" id="sPP-48-snh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dqH-25-eLU"/>
                     <connections>
+                        <outlet property="edditButton" destination="26o-VI-SUU" id="fET-Id-7BT"/>
                         <outlet property="mapView" destination="hPU-hP-bS4" id="QUv-fy-RfP"/>
+                        <outlet property="setLocationButton" destination="PUO-sh-wOb" id="A3Y-Ut-MBA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uw-fm-2oY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="810"/>
+            <point key="canvasLocation" x="121.73913043478262" y="809.59821428571422"/>
         </scene>
         <!--Catogeries View Controller-->
         <scene sceneID="8hR-cp-my6">
@@ -522,6 +560,9 @@
     </scenes>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <namedColor name="green">
+            <color red="0.0" green="0.45300000905990601" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="labelBlack">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

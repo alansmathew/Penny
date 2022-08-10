@@ -25,6 +25,9 @@ class RecordsViewController: UIViewController {
         recordsTableView.dataSource = self
         recordsTableView.delegate = self
         
+        let tablefooter = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 90))
+        recordsTableView.tableFooterView = tablefooter
+        
         addButton.layer.cornerRadius = addButton.frame.size.height / 2
         addButton.layer.shadowColor = UIColor.black.cgColor;
         addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -33,7 +36,7 @@ class RecordsViewController: UIViewController {
         addButton.layer.masksToBounds = false;
         
         getDefaultCurrency()
-        print(defaultCurrency);
+//        print(defaultCurrency);
         
     }
     
@@ -86,7 +89,7 @@ class RecordsViewController: UIViewController {
     func listDatabaseData(){
         
         let fetchRequest = NSFetchRequest<Trans>(entityName: "Trans")
-        let sort = NSSortDescriptor(key: #keyPath(Trans.date), ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Trans.date), ascending:false)
         fetchRequest.sortDescriptors = [sort]
         
         do {
@@ -149,6 +152,7 @@ extension RecordsViewController:UITableViewDelegate{
                 let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
                 let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
                 viewC.transactionData = indexPath.row
+                viewC.setLocationData = databaseData![indexPath.row]
                 navigationController?.pushViewController(viewC, animated: true)
                 
             }
