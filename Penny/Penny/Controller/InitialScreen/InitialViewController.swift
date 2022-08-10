@@ -13,6 +13,25 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !UserDefaults.standard.bool(forKey: "FIRST"){
+            UserDefaults.standard.set(true, forKey: "FIRST")
+            let defaultCatogeries = ["Gas","Shopping","Medicine","Grocery","Transoprt"]
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            for x in defaultCatogeries{
+                let newCategory = CategoryTable(context: context)
+                newCategory.name = x
+                do{
+                    try context.save()
+                }catch{}
+            }
+            do{
+                categoryData = try context.fetch(CategoryTable.fetchRequest())
+            }
+            catch{}
+        }
+            
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         print(UserDefaults.standard.bool(forKey: "AUTH"))
@@ -26,10 +45,6 @@ class InitialViewController: UIViewController {
                     if success{
                         DispatchQueue.main.async {
                             self!.performSegue(withIdentifier: "auth", sender: nil)
-//                            print("5")
-//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                            let viewC = storyboard.instantiateViewController(withIdentifier: "initalTabBarContorller") as! initalTabBarContorller
-//                            self?.navigationController?.pushViewController(viewC, animated: true)
                         }
                     }
                 }
