@@ -52,8 +52,8 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
         let mailComposeVC =  MFMailComposeViewController()
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(["asethunath2390@conestogac.on.ca","tkunnemkerikala3231@conestogac.on.ca","jjoy1824@conestogac.on.ca","amathew2687@conestogac.on.ca","abenoy2025@conestogac.on.ca","avaradan4201@conestogac.on.ca"])
-        mailComposeVC.setSubject("FeedBack on Peeny App")
-        mailComposeVC.setMessageBody("Message Body", isHTML: false)
+        mailComposeVC.setSubject("FeedBack on Penny App")
+        mailComposeVC.setMessageBody("", isHTML: false)
         self.present(mailComposeVC, animated: true, completion: nil)
     }
 
