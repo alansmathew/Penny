@@ -135,7 +135,13 @@ class ShowMapViewController: UIViewController{
             setLocationData?.long = "\(coord.longitude)"
             let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
             let viewC = storyboard.instantiateViewController(withIdentifier: "AddTransactionsViewController") as! AddTransactionsViewController
-            viewC.dataFromRecords = setLocationData!
+            if let loc = setLocationData{
+                viewC.dataFromRecords = loc
+            }
+            else{
+                viewC.locationOnEmptyAdd = coord
+            }
+            
             navigationController?.pushViewController(viewC, animated: true)
         }
     }

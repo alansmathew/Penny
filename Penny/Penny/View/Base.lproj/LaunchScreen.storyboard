@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,24 +24,44 @@
                                     <constraint firstAttribute="width" secondItem="KbP-dL-kqq" secondAttribute="height" multiplier="1:1" id="lKq-fc-FIP"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Penny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhV-Op-OHZ">
+                                <rect key="frame" x="179" y="533" width="56" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" name="green"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A penny saved is a penny earned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHY-rC-3JM">
+                                <rect key="frame" x="20" y="562" width="374" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KbP-dL-kqq" secondAttribute="trailing" constant="82" id="3Hf-fe-3sR"/>
+                            <constraint firstItem="AhV-Op-OHZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Ho-gW-8LY"/>
+                            <constraint firstItem="AhV-Op-OHZ" firstAttribute="top" secondItem="KbP-dL-kqq" secondAttribute="bottom" constant="-40" id="M2k-3a-At8"/>
                             <constraint firstItem="KbP-dL-kqq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Rfh-Yk-Hos"/>
+                            <constraint firstItem="tHY-rC-3JM" firstAttribute="top" secondItem="AhV-Op-OHZ" secondAttribute="bottom" constant="5" id="WfO-WQ-vdr"/>
                             <constraint firstItem="KbP-dL-kqq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="82" id="XNl-O4-lGg"/>
                             <constraint firstItem="KbP-dL-kqq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="h3R-XD-Cmf"/>
+                            <constraint firstItem="tHY-rC-3JM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jD5-uM-zGs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tHY-rC-3JM" secondAttribute="trailing" constant="20" id="mI3-E9-Jg5"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo" width="525" height="375"/>
+        <namedColor name="green">
+            <color red="0.0" green="0.45300000905990601" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

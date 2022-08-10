@@ -19,7 +19,7 @@ class InitialViewController: UIViewController {
         
         if !UserDefaults.standard.bool(forKey: "FIRST"){
             UserDefaults.standard.set(true, forKey: "FIRST")
-            let defaultCatogeries = ["Gas","Shopping","Medicine","Grocery","Transoprt"]
+            let defaultCatogeries = ["Gas","Shopping","Medicine","Grocery","Transport"]
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             
             // adding defaultCatogeries to database Catogery
