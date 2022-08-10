@@ -30,7 +30,7 @@ class RecordsViewController: UIViewController {
         
         // setting up some styles for the button
         addButton.layer.cornerRadius = addButton.frame.size.height / 2
-        addButton.layer.shadowColor = UIColor.black.cgColor;
+        addButton.layer.shadowColor = UIColor(red: 0.84, green: 0.65, blue: 0.57, alpha: 0.8).cgColor;
         addButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         addButton.layer.shadowOpacity = 0.5;
         addButton.layer.shadowRadius = 10.0;
@@ -46,9 +46,6 @@ class RecordsViewController: UIViewController {
         recordsTableView.reloadData()
         
         listDatabaseData()
-        totalAmountLabel.text = "\(defaultCurrency)\(totalAmount)"
-        totalIncomeLabel.text = "⬆️ \(defaultCurrency)\(totalIncome)"
-        totalExpenseLabel.text = "⬇️ \(defaultCurrency)\(totalExpense)"
         
     }
     
@@ -80,6 +77,9 @@ class RecordsViewController: UIViewController {
             }
         }
         totalAmount = totalIncome - totalExpense
+        totalAmountLabel.text = "\(defaultCurrency)\(totalAmount)"
+        totalIncomeLabel.text = "⬆️ \(defaultCurrency)\(totalIncome)"
+        totalExpenseLabel.text = "⬇️ \(defaultCurrency)\(totalExpense)"
         recordsTableView.reloadData()
     }
     
@@ -162,10 +162,12 @@ extension RecordsViewController:UITableViewDelegate{
             do{
                 try self.context.save()
                 databaseData?.remove(at: indexPath.row)
+                print()
             }
             catch{}
             self.listDatabaseData()
         }
+        self.listDatabaseData()
         return UISwipeActionsConfiguration(actions: [action])
     }
     
