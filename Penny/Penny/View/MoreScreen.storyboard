@@ -29,9 +29,6 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PS5-vc-DoB">
                                         <rect key="frame" x="325" y="0.0" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="FaceID:" destination="Y6W-OH-hqX" eventType="valueChanged" id="uGs-vQ-Sdm"/>
-                                        </connections>
                                     </switch>
                                 </subviews>
                                 <constraints>
@@ -66,9 +63,6 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4eL-Gw-OPL" secondAttribute="trailing" constant="20" id="wqs-KC-Xej"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="FaceID" destination="PS5-vc-DoB" id="8ls-Ol-iAD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
