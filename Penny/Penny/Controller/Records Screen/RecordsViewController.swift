@@ -134,6 +134,7 @@ extension RecordsViewController:UITableViewDelegate{
     // if the particular record have the map location in it then the user will be redirected to ShowMapViewController
     // if not then the user will be sent to AddTransactionsViewController with data in the fields to update
     // note: this are in different storyboard!
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if databaseData?.count ?? 0 > 0 {
             if let long = databaseData![indexPath.row].long, let lat = databaseData![indexPath.row].lat{

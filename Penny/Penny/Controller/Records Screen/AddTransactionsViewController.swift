@@ -158,6 +158,7 @@ class AddTransactionsViewController: UIViewController {
             showAlert(title:"Invalid Input", message: "Date,Title,Amount and Category are required fields!!")
         }
     }
+    
     //set location of previous transactions
     @IBAction func setLocationButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)

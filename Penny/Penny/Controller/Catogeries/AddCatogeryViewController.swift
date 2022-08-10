@@ -114,6 +114,8 @@ extension AddCatogeryViewController : UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = catogeryTableView.dequeueReusableCell(withIdentifier: "catogeryIdentifier", for: indexPath) as! customAddCatogeryCell
+        let image = UIImageView(image: UIImage(named: "editIcon"))
+        cell.accessoryView = image
         if let data = categoryData{
             if indexPath.row < data.count{
                 cell.catogoryLabel.text = data[indexPath.row].name
