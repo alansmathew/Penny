@@ -605,13 +605,33 @@
                                     <constraint firstAttribute="width" secondItem="4ti-7e-Z9u" secondAttribute="height" multiplier="1:1" id="srM-CM-mUk"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="scN-Gc-cEm">
+                                <rect key="frame" x="20" y="533" width="374" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Penny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWT-tb-FrN">
+                                        <rect key="frame" x="159" y="0.0" width="56" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" name="green"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A penny saved is a penny earned" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6wb-yV-NEI">
+                                        <rect key="frame" x="92" y="29" width="190" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fRF-le-5Oa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="scN-Gc-cEm" firstAttribute="top" secondItem="4ti-7e-Z9u" secondAttribute="bottom" constant="-40" id="5Ld-dv-Z0J"/>
                             <constraint firstItem="fRF-le-5Oa" firstAttribute="trailing" secondItem="4ti-7e-Z9u" secondAttribute="trailing" constant="82" id="99E-We-MRY"/>
+                            <constraint firstItem="scN-Gc-cEm" firstAttribute="leading" secondItem="fRF-le-5Oa" secondAttribute="leading" constant="20" id="N9e-nQ-PJa"/>
                             <constraint firstItem="4ti-7e-Z9u" firstAttribute="centerX" secondItem="rcc-Nj-VlW" secondAttribute="centerX" id="V5B-Ei-6ed"/>
                             <constraint firstItem="4ti-7e-Z9u" firstAttribute="leading" secondItem="fRF-le-5Oa" secondAttribute="leading" constant="82" id="moU-I8-iTC"/>
+                            <constraint firstItem="fRF-le-5Oa" firstAttribute="trailing" secondItem="scN-Gc-cEm" secondAttribute="trailing" constant="20" id="rRR-cs-kdg"/>
                             <constraint firstItem="4ti-7e-Z9u" firstAttribute="centerY" secondItem="rcc-Nj-VlW" secondAttribute="centerY" id="xyu-G6-3f5"/>
                         </constraints>
                     </view>

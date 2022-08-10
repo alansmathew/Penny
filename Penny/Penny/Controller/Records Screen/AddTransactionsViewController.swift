@@ -24,6 +24,7 @@ class AddTransactionsViewController: UIViewController {
     @IBOutlet weak var currentLocationLabel: UILabel!
     
     var dataFromRecords : Trans?
+    var locationOnEmptyAdd : CLLocationCoordinate2D?
     // We set locationManager object to the CLLocationmanager -Delegat
     let locationManager = CLLocationManager()
     var tempCounter = 0
@@ -74,6 +75,11 @@ class AddTransactionsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         locationManager.delegate = self
+        if let loc = locationOnEmptyAdd{
+            location = loc
+            getAdress(Lat: "\(loc.latitude)", Long: "\(loc.longitude)")
+        }
+ 
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -136,6 +142,7 @@ class AddTransactionsViewController: UIViewController {
                     newRecord.lat = "\(loc.latitude)"
                     newRecord.long = "\(loc.longitude)"
                 }
+                
             }
             do {
                 try self.context.save()
