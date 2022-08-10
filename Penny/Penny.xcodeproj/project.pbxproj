@@ -18,8 +18,6 @@
 		992AB38528919BAA0062F649 /* MoreScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992AB38428919BA90062F649 /* MoreScreen.storyboard */; };
 		992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38628919CE30062F649 /* MainCurrencyViewController.swift */; };
 		992AB38928919D850062F649 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38828919D850062F649 /* PasscodeViewController.swift */; };
-		992AB38B28919E690062F649 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38A28919E690062F649 /* InfoViewController.swift */; };
-		992AB38D28919E9F0062F649 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38C28919E9F0062F649 /* FeedbackViewController.swift */; };
 		99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993776FF287F3CA9003330A5 /* AppDelegate.swift */; };
 		99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99377701287F3CA9003330A5 /* SceneDelegate.swift */; };
 		99377707287F3CA9003330A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99377705287F3CA9003330A5 /* Main.storyboard */; };
@@ -33,6 +31,9 @@
 		9940D614289AC5C70036F108 /* StaticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D613289AC5C70036F108 /* StaticsViewController.swift */; };
 		9940D616289AC75C0036F108 /* ShowMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D615289AC75C0036F108 /* ShowMapViewController.swift */; };
 		9940D61D289AD84F0036F108 /* CategoryTable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */; };
+		994BEBC628A35685001AD7EB /* initalTabBarContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994BEBC528A35685001AD7EB /* initalTabBarContorller.swift */; };
+		994BEBC828A356DD001AD7EB /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994BEBC728A356DD001AD7EB /* InitialViewController.swift */; };
+		994BEBCA28A3594B001AD7EB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994BEBC928A3594B001AD7EB /* InfoViewController.swift */; };
 		9983605B289115010026F2CD /* AdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983605A289115010026F2CD /* AdressModel.swift */; };
 		999041152887162900B80545 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999041142887162900B80545 /* RecordsViewController.swift */; };
 		9990411C2887389100B80545 /* RecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990411B2887389100B80545 /* RecordsModel.swift */; };
@@ -52,8 +53,6 @@
 		992AB38428919BA90062F649 /* MoreScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreScreen.storyboard; sourceTree = "<group>"; };
 		992AB38628919CE30062F649 /* MainCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCurrencyViewController.swift; sourceTree = "<group>"; };
 		992AB38828919D850062F649 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
-		992AB38A28919E690062F649 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		992AB38C28919E9F0062F649 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		993776FC287F3CA9003330A5 /* Penny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		993776FF287F3CA9003330A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99377701287F3CA9003330A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +68,9 @@
 		9940D613289AC5C70036F108 /* StaticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticsViewController.swift; sourceTree = "<group>"; };
 		9940D615289AC75C0036F108 /* ShowMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewController.swift; sourceTree = "<group>"; };
 		9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryTable+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		994BEBC528A35685001AD7EB /* initalTabBarContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = initalTabBarContorller.swift; sourceTree = "<group>"; };
+		994BEBC728A356DD001AD7EB /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		994BEBC928A3594B001AD7EB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		9983605A289115010026F2CD /* AdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressModel.swift; sourceTree = "<group>"; };
 		999041142887162900B80545 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		9990411B2887389100B80545 /* RecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsModel.swift; sourceTree = "<group>"; };
@@ -117,8 +119,7 @@
 				8440864B2890F31E005D233F /* MenuViewController.swift */,
 				992AB38628919CE30062F649 /* MainCurrencyViewController.swift */,
 				992AB38828919D850062F649 /* PasscodeViewController.swift */,
-				992AB38A28919E690062F649 /* InfoViewController.swift */,
-				992AB38C28919E9F0062F649 /* FeedbackViewController.swift */,
+				994BEBC928A3594B001AD7EB /* InfoViewController.swift */,
 			);
 			path = "More Screen";
 			sourceTree = "<group>";
@@ -169,6 +170,7 @@
 		99377716287F3CD8003330A5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				994BEBC428A35640001AD7EB /* InitialScreen */,
 				9940D612289AC5790036F108 /* Statics Screen */,
 				9990411828871AE500B80545 /* Records Screen */,
 				68E734532890EA3900BBCF2A /* Catogeries */,
@@ -216,6 +218,15 @@
 				9940D613289AC5C70036F108 /* StaticsViewController.swift */,
 			);
 			path = "Statics Screen";
+			sourceTree = "<group>";
+		};
+		994BEBC428A35640001AD7EB /* InitialScreen */ = {
+			isa = PBXGroup;
+			children = (
+				994BEBC528A35685001AD7EB /* initalTabBarContorller.swift */,
+				994BEBC728A356DD001AD7EB /* InitialViewController.swift */,
+			);
+			path = InitialScreen;
 			sourceTree = "<group>";
 		};
 		9990411828871AE500B80545 /* Records Screen */ = {
@@ -362,12 +373,12 @@
 				68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */,
 				5DE5402F2890E5BD0065B83F /* AddTransactionsViewController.swift in Sources */,
 				68E734552890EA6700BBCF2A /* CatogeriesViewController.swift in Sources */,
-				992AB38D28919E9F0062F649 /* FeedbackViewController.swift in Sources */,
+				994BEBC628A35685001AD7EB /* initalTabBarContorller.swift in Sources */,
 				9940D611289AC2740036F108 /* Trans+CoreDataClass.swift in Sources */,
 				9940D60D289ABE4F0036F108 /* DateExtension.swift in Sources */,
 				990258C7288685D500890200 /* Constants.swift in Sources */,
-				992AB38B28919E690062F649 /* InfoViewController.swift in Sources */,
 				992AB38928919D850062F649 /* PasscodeViewController.swift in Sources */,
+				994BEBC828A356DD001AD7EB /* InitialViewController.swift in Sources */,
 				9940D616289AC75C0036F108 /* ShowMapViewController.swift in Sources */,
 				8440864C2890F31E005D233F /* MenuViewController.swift in Sources */,
 				9940D60B289ABE420036F108 /* CustomLoading.swift in Sources */,
@@ -376,6 +387,7 @@
 				992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */,
 				9990411C2887389100B80545 /* RecordsModel.swift in Sources */,
 				9940D61D289AD84F0036F108 /* CategoryTable+CoreDataClass.swift in Sources */,
+				994BEBCA28A3594B001AD7EB /* InfoViewController.swift in Sources */,
 				63AF79EC2888482B00240517 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
