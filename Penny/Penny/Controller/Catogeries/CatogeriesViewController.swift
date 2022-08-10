@@ -10,6 +10,7 @@ import UIKit
 class CatogeriesViewController: UIViewController {
 
     @IBOutlet weak var catogeriesCollectionView: UICollectionView!
+    //setting context to APPDATA of the app thus helps to fetch and save data from and to COREDATA
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -19,7 +20,6 @@ class CatogeriesViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        addCategory()
         fetchCategory()
     }
     
@@ -67,6 +67,7 @@ extension CatogeriesViewController : UICollectionViewDataSource{
 
 //MARK: - catogeries layout size
 extension CatogeriesViewController : UICollectionViewDelegateFlowLayout{
+    // setting 3 collection view cell on a row by calculating screeen width and margin
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (view.frame.size.width/3)-15, height: 60)
     }
@@ -79,6 +80,7 @@ extension CatogeriesViewController : UICollectionViewDelegateFlowLayout{
     
 }
 
+// custom Collection View Cell for displaying catogeries in colection views
 class catogeryCollectionViewCell : UICollectionViewCell{
     @IBOutlet weak var collectionView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -88,6 +90,7 @@ class catogeryCollectionViewCell : UICollectionViewCell{
 //MARK: - collection view delegate
 extension CatogeriesViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//      selecting catogary will save data on selectedCatogery CONSTENTS FilE
         selectedCatogery = categoryData?[indexPath.row].name ?? ""
         self.navigationController?.popViewController(animated: true)
     }

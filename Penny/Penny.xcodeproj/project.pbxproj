@@ -36,7 +36,6 @@
 		994BEBCA28A3594B001AD7EB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994BEBC928A3594B001AD7EB /* InfoViewController.swift */; };
 		9983605B289115010026F2CD /* AdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9983605A289115010026F2CD /* AdressModel.swift */; };
 		999041152887162900B80545 /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999041142887162900B80545 /* RecordsViewController.swift */; };
-		9990411C2887389100B80545 /* RecordsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9990411B2887389100B80545 /* RecordsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +72,6 @@
 		994BEBC928A3594B001AD7EB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		9983605A289115010026F2CD /* AdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressModel.swift; sourceTree = "<group>"; };
 		999041142887162900B80545 /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
-		9990411B2887389100B80545 /* RecordsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,9 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				994BEBC428A35640001AD7EB /* InitialScreen */,
-				9940D612289AC5790036F108 /* Statics Screen */,
 				9990411828871AE500B80545 /* Records Screen */,
 				68E734532890EA3900BBCF2A /* Catogeries */,
+				9940D612289AC5790036F108 /* Statics Screen */,
 				63AF79EE2888483800240517 /* MapView */,
 				8440864A2890F2D9005D233F /* More Screen */,
 			);
@@ -195,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */,
-				9990411B2887389100B80545 /* RecordsModel.swift */,
 				9983605A289115010026F2CD /* AdressModel.swift */,
 				9940D610289AC2740036F108 /* Trans+CoreDataClass.swift */,
 			);
@@ -385,7 +382,6 @@
 				99377700287F3CA9003330A5 /* AppDelegate.swift in Sources */,
 				99377702287F3CA9003330A5 /* SceneDelegate.swift in Sources */,
 				992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */,
-				9990411C2887389100B80545 /* RecordsModel.swift in Sources */,
 				9940D61D289AD84F0036F108 /* CategoryTable+CoreDataClass.swift in Sources */,
 				994BEBCA28A3594B001AD7EB /* InfoViewController.swift in Sources */,
 				63AF79EC2888482B00240517 /* MapViewController.swift in Sources */,
