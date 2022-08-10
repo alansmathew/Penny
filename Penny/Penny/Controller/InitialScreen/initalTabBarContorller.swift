@@ -11,9 +11,9 @@ class initalTabBarContorller: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+
+    //setting up potrate lock orientation for iPhone
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
      }

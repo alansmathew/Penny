@@ -24,10 +24,12 @@ class AddTransactionsViewController: UIViewController {
     @IBOutlet weak var currentLocationLabel: UILabel!
     
     var dataFromRecords : Trans?
+    // We set locationManager object to the CLLocationmanager -Delegat
     let locationManager = CLLocationManager()
     var tempCounter = 0
     var location : CLLocationCoordinate2D?
     var loading : (UIActivityIndicatorView,UIView)?
+    //We set context by adding core data to app
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -54,6 +56,7 @@ class AddTransactionsViewController: UIViewController {
         dateTime.maximumDate = Date()
     }
     
+    //Dismiss keyboard with Tap
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             super.touchesBegan(touches, with: event)
             self.view.endEditing(true)
@@ -77,6 +80,7 @@ class AddTransactionsViewController: UIViewController {
         selectedCatogery = ""
     }
     
+    //Edit transactions
     func setupEditScreen(data : Trans){
         segnment.selectedSegmentIndex = data.type == "income" ? 0 : 1
         dateTime.date = data.date!
@@ -87,10 +91,7 @@ class AddTransactionsViewController: UIViewController {
         addExpenseButton.setTitle("Edit Record", for: .normal)
         if let lat = data.lat, let long = data.long {
             location = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.00)
-//            if let latt = lat, let longg = long {
-//
-//            }
-            getAdress(Lat: lat, Long: long) // need to come from map view
+            getAdress(Lat: lat, Long: long)
         }
     }
     
@@ -112,6 +113,7 @@ class AddTransactionsViewController: UIViewController {
                 data.catagory = cat
                 data.date = date.date
                 data.amount = Double(amount) ?? 0.0
+                //fetch the value of segment controller and assign to type variable
                 data.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
                 data.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
                 
@@ -126,6 +128,7 @@ class AddTransactionsViewController: UIViewController {
                 newRecord.catagory = selectedCatogery
                 newRecord.date = date.date
                 newRecord.amount = Double(amount) ?? 0.0
+                //fetch the value of segment controller and assign to type variable
                 newRecord.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
                 newRecord.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
                 
@@ -139,6 +142,7 @@ class AddTransactionsViewController: UIViewController {
                 navigationController?.popToRootViewController(animated: true)
             }
             catch {
+                //alert the user when they miss required fields
                 showAlert(title: "Something Went Wrong", message:"Sorry we cannot add data to database!! Please try again")
             }
         }
@@ -147,7 +151,7 @@ class AddTransactionsViewController: UIViewController {
             showAlert(title:"Invalid Input", message: "Date,Title,Amount and Category are required fields!!")
         }
     }
-    
+    //set location of previous transactions
     @IBAction func setLocationButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
         let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
@@ -155,12 +159,14 @@ class AddTransactionsViewController: UIViewController {
         navigationController?.pushViewController(viewC, animated: true)
     }
     
+    //function for getting alert
     func showAlert(title : String, message : String){
             let alertmessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertmessage.addAction(UIAlertAction(title: "OK", style: .cancel))
             self.present(alertmessage ,animated: true, completion: nil)
         }
     
+    //function for getting address of the location
     func getAdress(Lat : String, Long : String){
         let session = URLSession(configuration: .default)
         let url = "https://open.mapquestapi.com/geocoding/v1/reverse?key=gHjgNhdtZj9B9WiAbYvSDvmo1NU61hWi&location="+Lat+",%20"+Long+"&includeNearestIntersection=true"
@@ -211,6 +217,3 @@ extension AddTransactionsViewController : CLLocationManagerDelegate {
     }
 }
 
-
-// if location on go to maps to show details on the map
-// else same page and so details.

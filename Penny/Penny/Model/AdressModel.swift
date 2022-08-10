@@ -12,6 +12,7 @@
 
 import Foundation
 
+// This model is for taking adress from a latitude and longitude in the map
 // MARK: - AdressModel
 struct AdressModel: Codable {
     let results: [Result]?

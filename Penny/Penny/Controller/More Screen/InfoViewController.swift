@@ -2,7 +2,7 @@
 //  InfoViewController.swift
 //  Penny
 //
-//  Created by Alan S Mathew on 09/08/22.
+//  Created by user207265 on 27/07/22.
 //
 
 import UIKit
@@ -11,8 +11,6 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 

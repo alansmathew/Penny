@@ -149,16 +149,17 @@ extension MapViewController : UICollectionViewDelegate{
     }
 }
 
-//collection view of categories
+//collection view cell of categories
 class CollectionViewMap : UICollectionViewCell{
     @IBOutlet weak var cellContentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
      
     override func awakeFromNib() {
             super.awakeFromNib()
+        // setting some styles for catogery view cell
         cellContentView.layer.cornerRadius = 10
         cellContentView.layer.shadowColor = UIColor.black.cgColor;
-        cellContentView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        cellContentView.layer.shadowOffset = CGSize(width: 0, height: 4)
         cellContentView.layer.shadowOpacity = 0.5;
         cellContentView.layer.shadowRadius = 4.0;
         cellContentView.layer.masksToBounds = false;

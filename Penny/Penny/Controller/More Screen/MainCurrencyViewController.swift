@@ -19,6 +19,7 @@ class MainCurrencyViewController: UIViewController {
         currencyTableView.delegate = self
         currencyTableView.dataSource = self
         
+        // setting up styles on selected currency view
         currentCurrencyView.layer.cornerRadius = 10
         currentCurrencyView.layer.shadowColor = UIColor.black.cgColor;
         currentCurrencyView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -28,15 +29,18 @@ class MainCurrencyViewController: UIViewController {
         currentCurrencyLabel.text = "\(currencyCounrty[defaultCurrencyIndex]) \(defaultCurrency)"
     }
     override func viewDidAppear(_ animated: Bool) {
+        //hiding tab bar
         tabBarController?.tabBar.isHidden = true
     }
     override func viewDidDisappear(_ animated: Bool) {
+        //enabling tab bar when view disappears
         tabBarController?.tabBar.isHidden = false
     }
 
 }
 extension MainCurrencyViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // currencyCounrty is a Constants from Constants file which have lots of list of Counrtys that have specific currencies
         return currencyCounrty.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,16 +53,18 @@ extension MainCurrencyViewController: UITableViewDataSource{
 
 extension MainCurrencyViewController :  UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//      changing default currency in view
         defaultCurrency = currencySymbol[indexPath.row]
         defaultCurrencyIndex = indexPath.row
         UserDefaults.standard.set(currencySymbol[indexPath.row], forKey: "CURRENCY_SYMBOL")
         UserDefaults.standard.set(indexPath.row, forKey: "CURRENCY_INDEX")
         currentCurrencyLabel.text = "\(currencyCounrty[defaultCurrencyIndex]) \(defaultCurrency)"
         tableView.deselectRow(at: indexPath, animated: true)
-//        print(UserDefaults.standard.string(forKey: "CURRENCY_SYMBOL"))
     }
 }
 
+// custom class for currency table view
 class CustomCurrencyCell : UITableViewCell{
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var currencySymbol: UILabel!
