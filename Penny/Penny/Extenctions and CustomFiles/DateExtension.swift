@@ -7,6 +7,7 @@
 
 import Foundation
 
+// these exenctions are userd to take dates in different formats
 extension Date{
     static func getDayOnly(date: Date) -> String{
         let dateFormatter = DateFormatter()

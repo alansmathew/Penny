@@ -80,7 +80,7 @@ class AddTransactionsViewController: UIViewController {
         selectedCatogery = ""
     }
     
-    //Edit transactions
+    //Edit transactions this only works when the dataFromRecords is not nil
     func setupEditScreen(data : Trans){
         segnment.selectedSegmentIndex = data.type == "income" ? 0 : 1
         dateTime.date = data.date!
@@ -170,9 +170,6 @@ class AddTransactionsViewController: UIViewController {
     func getAdress(Lat : String, Long : String){
         let session = URLSession(configuration: .default)
         let url = "https://open.mapquestapi.com/geocoding/v1/reverse?key=gHjgNhdtZj9B9WiAbYvSDvmo1NU61hWi&location="+Lat+",%20"+Long+"&includeNearestIntersection=true"
-        
-//        loading = customAnimation()               //--- when u want to start loading
-//        loadingProtocol(with: loading! , true)
 
         let mainUrl = URL(string: url)
         if let tempUrl = mainUrl {
@@ -184,6 +181,7 @@ class AddTransactionsViewController: UIViewController {
                         if let data = decodedData.results?.first?.locations?[0]{
                             let adress = "\(data.street ?? ""), \(data.adminArea5 ?? ""), \(data.postalCode ?? "")"
                             DispatchQueue.main.async{
+                                // getting onto main thread
                                 self.currentLocationLabel.text = "Current location: \(adress)"
                             }
                         }
@@ -203,12 +201,12 @@ class AddTransactionsViewController: UIViewController {
 extension AddTransactionsViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
+            // temp counter is for increesed accuracy of lat and long
 //            tempCounter += 1
             if tempCounter == 0 {
                 location = locations[0].coordinate
                 getAdress(Lat: "\(location!.latitude)", Long: "\(location!.longitude)")
                 currentLocationLabel.text = "Current location :  \(location!.latitude),\(location!.longitude)"
-//                print("Current location :  \(location!.latitude),\(location!.longitude)")
                 locationManager.stopUpdatingLocation()
                 tempCounter = 0
                 loadingProtocol(with: loading! ,false)    // --- to stop loading

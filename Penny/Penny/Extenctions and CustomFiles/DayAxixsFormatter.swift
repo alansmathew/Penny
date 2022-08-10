@@ -8,8 +8,11 @@
 import Foundation
 import Charts
 
+// this bartype determins witch type of xaxics parcing is needed
 var bartype = 0
 
+// this formattor is a custom file to handle x axis in the chart view
+// this parses the data in the x axixs and returs the curresponding string that is necessory
 public class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
     weak var chart: BarLineChartViewBase?
     
