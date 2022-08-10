@@ -9,29 +9,33 @@ import Foundation
 import UIKit
 import CoreLocation
 
+// to take the current times
 let now = Date()
 var totalAmount = 0.0
 var totalIncome = 0.0
 var totalExpense = 0.0
 
+// to get selected catogery from the catogery page to addTransaction Page
 var selectedCatogery = ""
 
 //database data comes here
 var databaseData:[Trans]?
 var categoryData : [CategoryTable]?
 
+// constants of colors
 struct Constants {
     // colors
     let greenColor = UIColor(red: 0.00, green: 0.45, blue: 0.39, alpha: 1.00)
     let redColor = UIColor.red
     
+    // more menu items
     let menuItems = ["Main currency settings","Passcode","Info","Feedback"]
-    let catogeries = ["Food", "Grocery", "Gas","Medicines","Shopping"]
 }
 
 var defaultCurrency = "$"
 var defaultCurrencyIndex = 18
 
+// list of countries for currency
 let currencyCounrty = [
                        "Albania Lek",
                        "Afghanistan Afghani",
@@ -147,6 +151,7 @@ let currencyCounrty = [
                        "Zimbabwe Dollar"
 ]
 
+// list of currency for the country
 let currencySymbol = [
     "Lek",
                 "؋",

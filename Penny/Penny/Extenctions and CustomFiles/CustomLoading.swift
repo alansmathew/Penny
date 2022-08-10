@@ -50,7 +50,8 @@ extension UIViewController {
     
     return (actualAnimationView,parentView)
 }
-    
+ 
+    // creates a loading animation and show it into the users current screen
     func loadingProtocol(with : (UIActivityIndicatorView,UIView),_ status : Bool){
         if status {
             with.0.startAnimating()
@@ -62,39 +63,4 @@ extension UIViewController {
             with.1.isHidden = true
         }
     }
-    
-    //MARK: tableView Loading
-    func createView(table : UITableView) -> UIView{
-        let footerView = UIView(frame: CGRect(x: 0,y: 0,width: table.frame.width,height: 50))
-        footerView.backgroundColor = .clear
-        let loadingItem = UIActivityIndicatorView()
-        loadingItem.translatesAutoresizingMaskIntoConstraints = false
-        footerView.addSubview(loadingItem)
-        loadingItem.color = .black
-        loadingItem.startAnimating()
-       
-        
-        var constr = [NSLayoutConstraint]()
-        constr.append(loadingItem.heightAnchor.constraint(equalToConstant: 40))
-        constr.append(loadingItem.widthAnchor.constraint(equalToConstant: 40))
-        constr.append(loadingItem.centerXAnchor.constraint(equalTo: footerView.centerXAnchor))
-        constr.append(loadingItem.centerYAnchor.constraint(equalTo: footerView.centerYAnchor))
-        NSLayoutConstraint.activate(constr)
-        
-        return footerView
-    }
-    
-    func tableviewLastCellLoading (table : UITableView, start : Bool = true){
-        
-        if start {
-            let view = createView(table: table)
-            table.tableFooterView = view
-        }
-        else{
-            table.tableFooterView = nil
-        }
-    }
-    
-    
-    
 }
