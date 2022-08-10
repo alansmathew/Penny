@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2yY-qn-V7b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R6f-MT-by8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -344,10 +344,10 @@
             </objects>
             <point key="canvasLocation" x="2071.0144927536235" y="-5.3571428571428568"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Inital Tab Bar Contorller-->
         <scene sceneID="FIn-c3-dri">
             <objects>
-                <tabBarController id="2yY-qn-V7b" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="initalTabBarContorller" storyboardIdentifier="initalTabBarContorller" id="2yY-qn-V7b" customClass="initalTabBarContorller" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="if8-K4-JcR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -559,7 +559,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LA3-S9-Ra1">
-                                <rect key="frame" x="10" y="108" width="394" height="705"/>
+                                <rect key="frame" x="10" y="160" width="394" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="menuCell" rowHeight="60" id="Ssg-H4-yvi">
@@ -591,8 +591,41 @@
             </objects>
             <point key="canvasLocation" x="2168" y="2235"/>
         </scene>
+        <!--Initial View Controller-->
+        <scene sceneID="QW2-rO-eP3">
+            <objects>
+                <viewController id="R6f-MT-by8" customClass="InitialViewController" customModule="Penny" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rcc-Nj-VlW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="4ti-7e-Z9u">
+                                <rect key="frame" x="82" y="323" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4ti-7e-Z9u" secondAttribute="height" multiplier="1:1" id="srM-CM-mUk"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fRF-le-5Oa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fRF-le-5Oa" firstAttribute="trailing" secondItem="4ti-7e-Z9u" secondAttribute="trailing" constant="82" id="99E-We-MRY"/>
+                            <constraint firstItem="4ti-7e-Z9u" firstAttribute="centerX" secondItem="rcc-Nj-VlW" secondAttribute="centerX" id="V5B-Ei-6ed"/>
+                            <constraint firstItem="4ti-7e-Z9u" firstAttribute="leading" secondItem="fRF-le-5Oa" secondAttribute="leading" constant="82" id="moU-I8-iTC"/>
+                            <constraint firstItem="4ti-7e-Z9u" firstAttribute="centerY" secondItem="rcc-Nj-VlW" secondAttribute="centerY" id="xyu-G6-3f5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="2yY-qn-V7b" kind="presentation" identifier="auth" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="fg7-Tm-njb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8b-dw-ouI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1451" y="1262"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="logo" width="525" height="375"/>
         <image name="map" width="22.5" height="22.5"/>
         <image name="menu" width="22.5" height="22.5"/>
         <image name="statistics" width="22.5" height="22.5"/>
