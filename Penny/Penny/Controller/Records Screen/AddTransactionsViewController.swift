@@ -87,6 +87,9 @@ class AddTransactionsViewController: UIViewController {
         addExpenseButton.setTitle("Edit Record", for: .normal)
         if let lat = data.lat, let long = data.long {
             location = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(long) ?? 0.00)
+//            if let latt = lat, let longg = long {
+//
+//            }
             getAdress(Lat: lat, Long: long) // need to come from map view
         }
     }
@@ -133,7 +136,7 @@ class AddTransactionsViewController: UIViewController {
             }
             do {
                 try self.context.save()
-                navigationController?.popViewController(animated: true)
+                navigationController?.popToRootViewController(animated: true)
             }
             catch {
                 showAlert(title: "Something Went Wrong", message:"Sorry we cannot add data to database!! Please try again")
@@ -143,6 +146,13 @@ class AddTransactionsViewController: UIViewController {
         {
             showAlert(title:"Invalid Input", message: "Date,Title,Amount and Category are required fields!!")
         }
+    }
+    
+    @IBAction func setLocationButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
+        let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
+        viewC.setLocationData = dataFromRecords
+        navigationController?.pushViewController(viewC, animated: true)
     }
     
     func showAlert(title : String, message : String){

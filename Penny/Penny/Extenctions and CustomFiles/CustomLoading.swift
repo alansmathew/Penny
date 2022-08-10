@@ -38,8 +38,8 @@ extension UIViewController {
     var constr = [NSLayoutConstraint]()
     constr.append(parentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor))
     constr.append(parentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor))
-    constr.append(parentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor))
-    constr.append(parentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor))
+    constr.append(parentView.bottomAnchor.constraint(equalTo: view.superview!.bottomAnchor))
+    constr.append(parentView.topAnchor.constraint(equalTo: view.superview!.topAnchor))
     
     constr.append(actualAnimationView.heightAnchor.constraint(equalToConstant: 60))
     constr.append(actualAnimationView.widthAnchor.constraint(equalToConstant: 60))
@@ -55,7 +55,7 @@ extension UIViewController {
         if status {
             with.0.startAnimating()
             with.1.isHidden = false
-            with.1.alpha = 0.7
+            with.1.alpha = 0.9
         }
         else{
             with.0.stopAnimating()
