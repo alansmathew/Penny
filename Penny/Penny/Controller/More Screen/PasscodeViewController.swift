@@ -35,6 +35,15 @@ class PasscodeViewController: UIViewController {
                     if success{
 //                      saving if sucesssfully evuvalated faceID
                         UserDefaults.standard.set(true, forKey: "AUTH")
+                        DispatchQueue.main.async {
+                            self?.authSwitch.isOn = true
+                        }
+                        
+                    }
+                    else{
+                        DispatchQueue.main.async {
+                            self?.authSwitch.isOn = false
+                        }
                     }
                 }
             }

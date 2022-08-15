@@ -15,6 +15,7 @@ class ShowMapViewController: UIViewController{
     @IBOutlet weak var setLocationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     var setLocationData : Trans?
+    var tempTypedData : RecordsDataModel?
     var transactionData : Int?
     var loading : (UIActivityIndicatorView,UIView)?
     var coordinate : CLLocationCoordinate2D?
@@ -141,7 +142,11 @@ class ShowMapViewController: UIViewController{
             else{
                 viewC.locationOnEmptyAdd = coord
             }
-            
+            print(tempTypedData?.name)
+            if let temp = tempTypedData {
+                viewC.tempTypedData = temp
+                viewC.comingFromMap = true
+            }
             navigationController?.pushViewController(viewC, animated: true)
         }
     }
