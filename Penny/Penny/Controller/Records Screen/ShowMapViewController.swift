@@ -142,7 +142,6 @@ class ShowMapViewController: UIViewController{
             else{
                 viewC.locationOnEmptyAdd = coord
             }
-            print(tempTypedData?.name)
             if let temp = tempTypedData {
                 viewC.tempTypedData = temp
                 viewC.comingFromMap = true
