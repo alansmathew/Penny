@@ -100,8 +100,6 @@ class AddTransactionsViewController: UIViewController {
         titleTextField.text = data.name
         amountTextField.text = "\(data.amount)"
         catogeryLabel.text = selectedCatogery.count > 0 ? selectedCatogery : data.catagory!
-        print("here comes")
-        print(selectedCatogery.count > 0 ? selectedCatogery : data.catagory!)
         noteTextField.text = data.note ?? ""
         addExpenseButton.setTitle("Edit Record", for: .normal)
         if let lat = data.lat, let long = data.long {
