@@ -75,6 +75,7 @@ class AddTransactionsViewController: UIViewController {
         
         if let data = tempTypedData, comingFromMap{
             setupTypedData(data: data)
+            print("this happens")
         }
     
     }
@@ -99,6 +100,8 @@ class AddTransactionsViewController: UIViewController {
         titleTextField.text = data.name
         amountTextField.text = "\(data.amount)"
         catogeryLabel.text = selectedCatogery.count > 0 ? selectedCatogery : data.catagory!
+        print("here comes")
+        print(selectedCatogery.count > 0 ? selectedCatogery : data.catagory!)
         noteTextField.text = data.note ?? ""
         addExpenseButton.setTitle("Edit Record", for: .normal)
         if let lat = data.lat, let long = data.long {
@@ -107,6 +110,7 @@ class AddTransactionsViewController: UIViewController {
         }
     }
     
+    //storing typed data
     func setupTypedData(data : RecordsDataModel){
         segnment.selectedSegmentIndex = data.type == "income" ? 0 : 1
         dateTime.date = data.date!
@@ -148,7 +152,7 @@ class AddTransactionsViewController: UIViewController {
             else{
                 let newRecord = Trans(context: self.context)
                 newRecord.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
-                newRecord.catagory = selectedCatogery
+                newRecord.catagory = cat
                 newRecord.date = date.date
                 newRecord.amount = Double(amount) ?? 0.0
                 //fetch the value of segment controller and assign to type variable
