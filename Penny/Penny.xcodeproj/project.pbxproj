@@ -15,6 +15,7 @@
 		68E734572890EABA00BBCF2A /* AddCatogeryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */; };
 		8440864C2890F31E005D233F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440864B2890F31E005D233F /* MenuViewController.swift */; };
 		990258C7288685D500890200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990258C6288685D500890200 /* Constants.swift */; };
+		9928945C28A9CBC8002A2314 /* RecordsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928945B28A9CBC8002A2314 /* RecordsDataModel.swift */; };
 		992AB38528919BAA0062F649 /* MoreScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992AB38428919BA90062F649 /* MoreScreen.storyboard */; };
 		992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38628919CE30062F649 /* MainCurrencyViewController.swift */; };
 		992AB38928919D850062F649 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992AB38828919D850062F649 /* PasscodeViewController.swift */; };
@@ -49,6 +50,7 @@
 		68E734562890EABA00BBCF2A /* AddCatogeryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatogeryViewController.swift; sourceTree = "<group>"; };
 		8440864B2890F31E005D233F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		990258C6288685D500890200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9928945B28A9CBC8002A2314 /* RecordsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsDataModel.swift; sourceTree = "<group>"; };
 		992AB38428919BA90062F649 /* MoreScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreScreen.storyboard; sourceTree = "<group>"; };
 		992AB38628919CE30062F649 /* MainCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCurrencyViewController.swift; sourceTree = "<group>"; };
 		992AB38828919D850062F649 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				9940D61B289AD84F0036F108 /* CategoryTable+CoreDataClass.swift */,
 				9983605A289115010026F2CD /* AdressModel.swift */,
 				9940D610289AC2740036F108 /* Trans+CoreDataClass.swift */,
+				9928945B28A9CBC8002A2314 /* RecordsDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				992AB38728919CE30062F649 /* MainCurrencyViewController.swift in Sources */,
 				9940D61D289AD84F0036F108 /* CategoryTable+CoreDataClass.swift in Sources */,
 				994BEBCA28A3594B001AD7EB /* InfoViewController.swift in Sources */,
+				9928945C28A9CBC8002A2314 /* RecordsDataModel.swift in Sources */,
 				63AF79EC2888482B00240517 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,7 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FSX2V5XHKL;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Penny/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -564,7 +568,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FSX2V5XHKL;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Penny/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -24,6 +24,8 @@ class AddTransactionsViewController: UIViewController {
     @IBOutlet weak var currentLocationLabel: UILabel!
     
     var dataFromRecords : Trans?
+    var tempTypedData : RecordsDataModel?
+    var comingFromMap = false
     var locationOnEmptyAdd : CLLocationCoordinate2D?
     // We set locationManager object to the CLLocationmanager -Delegat
     let locationManager = CLLocationManager()
@@ -70,6 +72,10 @@ class AddTransactionsViewController: UIViewController {
         if let dataRecord = dataFromRecords{
             setupEditScreen(data: dataRecord)
         }
+        
+        if let data = tempTypedData, comingFromMap{
+            setupTypedData(data: data)
+        }
     
     }
     
@@ -101,6 +107,17 @@ class AddTransactionsViewController: UIViewController {
         }
     }
     
+    func setupTypedData(data : RecordsDataModel){
+        segnment.selectedSegmentIndex = data.type == "income" ? 0 : 1
+        dateTime.date = data.date!
+        titleTextField.text = data.name
+        amountTextField.text = "\(data.amount!)"
+        catogeryLabel.text = selectedCatogery.count > 0 ? selectedCatogery : data.category
+        noteTextField.text = data.note ?? ""
+        comingFromMap = false
+    }
+    
+    
     @IBAction func getUserLocationButton(_ sender: UIButton) {
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -112,7 +129,7 @@ class AddTransactionsViewController: UIViewController {
     @IBAction func addRecordsClick(_ sender: UIButton) {
         if let date = dateTime, let title = titleTextField.text, let amount = amountTextField.text,
            titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0, amountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0,
-           let cat = catogeryLabel.text{
+           let cat = catogeryLabel.text,catogeryLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0 > 0{
             
             if let data = dataFromRecords{
                 data.name = title.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -163,6 +180,17 @@ class AddTransactionsViewController: UIViewController {
     @IBAction func setLocationButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "AddTransaction", bundle: nil)
         let viewC = storyboard.instantiateViewController(withIdentifier: "ShowMapViewController") as! ShowMapViewController
+     
+        //storing typed data and passing it to next screen
+        tempTypedData = RecordsDataModel()
+        tempTypedData?.name = titleTextField?.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        tempTypedData?.category = catogeryLabel.text ?? ""
+        tempTypedData?.date = dateTime.date
+        tempTypedData?.amount = Double(amountTextField?.text ?? "0") ?? 0.0
+        tempTypedData?.type = segnment.selectedSegmentIndex == 0 ? "income" : "expense"
+        tempTypedData?.note = noteTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        viewC.tempTypedData = tempTypedData
+            
         viewC.setLocationData = dataFromRecords
         navigationController?.pushViewController(viewC, animated: true)
     }
